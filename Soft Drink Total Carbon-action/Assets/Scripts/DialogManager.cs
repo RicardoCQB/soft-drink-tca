@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class DialogManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Queue<string> sentences;
+
+    private void Start()
     {
-        
+        sentences = new Queue<string>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StartDialog(Dialog dialogue)
     {
-        
+        Debug.Log("Starting conversation with: " + dialogue.speakerName);
     }
 }
