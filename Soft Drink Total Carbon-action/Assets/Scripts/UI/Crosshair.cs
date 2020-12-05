@@ -6,6 +6,7 @@ public class Crosshair : MonoBehaviour
 {
     [SerializeField] Texture2D texture;
     Vector2 cursorTxtOffset;
+
     private void Start()
     {
         // By default, the pivot of a cursor texture is the upper left corner.
