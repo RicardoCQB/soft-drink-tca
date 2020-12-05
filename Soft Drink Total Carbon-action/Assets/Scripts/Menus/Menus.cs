@@ -5,6 +5,14 @@ using UnityEngine.SceneManagement; // Library added speicfically for this script
 
 public class Menus : MonoBehaviour
 {
+    public void EnableGameObject(GameObject gameObject)
+    {
+        gameObject.SetActive(true);
+    }
+    public void DisableGameObject(GameObject gameObject)
+    {
+        gameObject.SetActive(false);
+    }
     public void LoadScene(string sceneToLoad)
     {
         SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Single);
