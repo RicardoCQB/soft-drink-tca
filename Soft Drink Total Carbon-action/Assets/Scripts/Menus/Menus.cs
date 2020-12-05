@@ -15,6 +15,7 @@ public class Menus : MonoBehaviour
     }
     public void LoadScene(string sceneToLoad)
     {
+        // This will replace the active scene with the one you want to load.
         SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Single);
     }
     public void ExitApplication()
