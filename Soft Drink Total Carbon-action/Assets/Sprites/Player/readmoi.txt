@@ -1,0 +1,6 @@
+ tinham-me dito para exportar a 1000%, 
+mas eu quis ter aqui as 32x32 na mesma, caso seja necessário
+ tem versões com e sem a mão direita caso queiramos pôr a arma
+ não sei se vale a pena ter sprites para a esquerda porque se calhar faz-se só 
+horizontal flip
+ talvez seja preferível diminuir o nº de frames para acelerar a animação
