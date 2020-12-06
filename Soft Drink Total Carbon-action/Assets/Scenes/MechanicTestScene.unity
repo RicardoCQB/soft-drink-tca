@@ -295,7 +295,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 69bc494cac300284bbceac054a24afe6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bb3c748118ecfb947af3fb06df49572f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -427,7 +427,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 7f9fd5d1fb12a184abce59bb641a8c27, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7f0a00a9bc5dbcf4aa45448828261e36, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -503,7 +503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 79868092}
   bulletPrefab: {fileID: 8809926783632044467, guid: 03bb0b9c7b3a3174aa323cff30e1da93, type: 3}
-  bulletForce: 5
+  bulletForce: 10
 --- !u!1 &1144121520
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,7 +563,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 69bc494cac300284bbceac054a24afe6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bb3c748118ecfb947af3fb06df49572f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
