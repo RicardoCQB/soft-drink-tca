@@ -23,6 +23,7 @@ public class HUD : MonoBehaviour
     [SerializeField] int testNumberOfHearts;
     // Variables that will probably stay:
     [SerializeField] GameObject heartPrefab;
+    List<GameObject> instantiatedHearts;
 
     private void Awake()
     {
@@ -43,6 +44,7 @@ public class HUD : MonoBehaviour
     
     void InstantiateHearts()
     {
+        instantiatedHearts = new List<GameObject>();
         Vector3 testOffsetVectorThree;
         int testHeartCount = 0;
 
@@ -56,11 +58,9 @@ public class HUD : MonoBehaviour
             // Y-position for all the hearts. However, for the X-position, only the first heart reuses the value from
             // this pivot. For the rest of them, we add an offset value to that pivot's X-position value.
 
-            // The offset value (which corresponds to the space between each 2 hearts) is defined by the user in the
-            // Unity Editor, by manipulating the value of "testNewHeartPositionOffset". This value is then multiplied
-            // by "testHeartCount", which we use to count how many hearts have already been instantiated
-            // We add this new offset value to the pivot's X-position value, to determine the real X-position
-            // of the new heart we want to instance.
+            // The default offset value is multiplied by "testHeartCount", which we use to count how many hearts 
+            // have already been instantiated, so that we can determine the X-position of the specific
+            // heart we want to instance.
             // This is why the offset value does not affect the first heart: "testHeartCount" is initially at zero.
             testOffsetVectorThree = new Vector3(
                 testInitialPivot.position.x + (testNewHeartPositionOffset * testHeartCount),
@@ -73,7 +73,10 @@ public class HUD : MonoBehaviour
 
             // We make a new instance of the heart prefab, with the position we previously calculated, with no rotation
             // and we make it a child of the "HeartPadding" object in the Canvas (which groups all hearts).
-            Instantiate(heartPrefab, testOffsetVectorThree, Quaternion.Euler(0, 0, 0), testParentObject);
+            // Then, we add each new instance to a list, so that we are able to manipulate them according to the player's
+            // current lives at any moment.
+            GameObject temp = Instantiate(heartPrefab, testOffsetVectorThree, Quaternion.Euler(0, 0, 0), testParentObject);
+            instantiatedHearts.Add(temp);
         }
     }
 }
