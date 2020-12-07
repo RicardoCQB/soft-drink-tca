@@ -5,13 +5,20 @@ using UnityEngine.UI; // Library added speicfically for this script.
 
 public class HUD : MonoBehaviour
 {
-    [Header("Text")]
+    [Header("Shoot/Reload")]
     // Test variables:
     [SerializeField] int testCurrentBullets;
     [SerializeField] int testReloadBullets;
-    [SerializeField] int testOwnedCoins;
+    [SerializeField] Text testReloadText;
     // Variables that will probably stay:
     [SerializeField] Text bulletsText;
+    int weaponMagazineSize;
+    bool isGunReloading = false;
+
+    [Header("Coins")]
+    // Test variables:
+    [SerializeField] int testOwnedCoins;
+    // Variables that will probably stay:
     [SerializeField] Text coinsText;
 
     [Header("Lives")]
@@ -31,8 +38,11 @@ public class HUD : MonoBehaviour
         InstantiateHearts();
     }
 
-    private void LateUpdate()
+    private void Start()
     {
+        weaponMagazineSize = testCurrentBullets;
+        testReloadText.text = "";
+
         // Shows the user's currently owned coins:
         coinsText.text = $"{testOwnedCoins}";
 
@@ -42,7 +52,7 @@ public class HUD : MonoBehaviour
 
 
     //// Script-specific functions:
-    
+
     void InstantiateHearts()
     {
         instantiatedHearts = new List<GameObject>();
@@ -88,7 +98,7 @@ public class HUD : MonoBehaviour
         testLives -= hitDamage;
         for (int i = (testNumberOfHearts - 1); i > -1; i--)
         {
-            if (testLives <= ((heartLifeValue * (i + 1)) - heartLifeValue) )
+            if (testLives <= ((heartLifeValue * (i + 1)) - heartLifeValue))
             {
                 instantiatedHearts[i].SetActive(false);
                 /*
@@ -103,14 +113,14 @@ public class HUD : MonoBehaviour
                 */
             }
             else if (testLives > ((heartLifeValue * (i + 1)) - heartLifeValue) &&
-                     testLives < (heartLifeValue * (i + 1)) )
+                     testLives < (heartLifeValue * (i + 1)))
             {
                 if (testLives < (heartLifeValue * (i + 1)))
                 {
                     RectTransform thisHeartsTransform = instantiatedHearts[i].GetComponent<RectTransform>();
                     Debug.Log($"{(testLives - (heartLifeValue * i)) / heartLifeValue}");
                     thisHeartsTransform.sizeDelta = new Vector2(
-                        32 * (( testLives - (heartLifeValue * i) ) / heartLifeValue),
+                        32 * ((testLives - (heartLifeValue * i)) / heartLifeValue),
                         thisHeartsTransform.sizeDelta.y
                         );
                 }
@@ -122,5 +132,28 @@ public class HUD : MonoBehaviour
                 */
             }
         }
+    }
+    public void ReduceWeaponMag()
+    {
+        if (testCurrentBullets != 0) testCurrentBullets -= 1;
+        else if (isGunReloading == false) StartCoroutine("ReloadWeapon");
+    }
+    IEnumerator ReloadWeapon()
+    {
+        isGunReloading = true;
+        testReloadText.text = "RELOAD";
+        yield return new WaitForSeconds(2);
+        testCurrentBullets = weaponMagazineSize;
+        testReloadBullets -= weaponMagazineSize;
+        UpdateWeaponDisplay();
+        testReloadText.text = "";
+        isGunReloading = false;
+        yield return null;
+    }
+    public void UpdateWeaponDisplay()
+    {
+        // Updates the display of the user's available bullets to shoot and the ones available to reload.
+        // Trigering this function is probably a bit more efficient than running this code every frame.
+        bulletsText.text = $"{testCurrentBullets}/{testReloadBullets}";
     }
 }
