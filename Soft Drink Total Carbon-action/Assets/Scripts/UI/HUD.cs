@@ -24,7 +24,7 @@ public class HUD : MonoBehaviour
     // Variables that will probably stay:
     [SerializeField] GameObject heartPrefab;
     List<GameObject> instantiatedHearts;
-    int heartLifeValue;
+    float heartLifeValue;
 
     private void Awake()
     {
@@ -88,7 +88,6 @@ public class HUD : MonoBehaviour
         testLives -= hitDamage;
         for (int i = (testNumberOfHearts - 1); i > -1; i--)
         {
-            Debug.Log($"{testLives} / {((heartLifeValue * (i + 1)) - heartLifeValue)}");
             if (testLives <= ((heartLifeValue * (i + 1)) - heartLifeValue) )
             {
                 instantiatedHearts[i].SetActive(false);
@@ -109,8 +108,9 @@ public class HUD : MonoBehaviour
                 if (testLives < (heartLifeValue * (i + 1)))
                 {
                     RectTransform thisHeartsTransform = instantiatedHearts[i].GetComponent<RectTransform>();
+                    Debug.Log($"{(testLives - (heartLifeValue * i)) / heartLifeValue}");
                     thisHeartsTransform.sizeDelta = new Vector2(
-                        32 * (testLives - (heartLifeValue * (i - 1)) / heartLifeValue),
+                        32 * (( testLives - (heartLifeValue * i) ) / heartLifeValue),
                         thisHeartsTransform.sizeDelta.y
                         );
                 }
