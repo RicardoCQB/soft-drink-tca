@@ -24,6 +24,7 @@ public class HUD : MonoBehaviour
     // Variables that will probably stay:
     [SerializeField] GameObject heartPrefab;
     List<GameObject> instantiatedHearts;
+    int heartLifeValue;
 
     private void Awake()
     {
@@ -72,11 +73,54 @@ public class HUD : MonoBehaviour
             testHeartCount += 1;
 
             // We make a new instance of the heart prefab, with the position we previously calculated, with no rotation
-            // and we make it a child of the "HeartPadding" object in the Canvas (which groups all hearts).
+            // and we make it a child of the "HeartGroup" object in the Canvas.
             // Then, we add each new instance to a list, so that we are able to manipulate them according to the player's
             // current lives at any moment.
             GameObject temp = Instantiate(heartPrefab, testOffsetVectorThree, Quaternion.Euler(0, 0, 0), testParentObject);
             instantiatedHearts.Add(temp);
+        }
+
+        heartLifeValue = (testLives / testNumberOfHearts);
+    }
+
+    public void ReduceLifeDisplay(int hitDamage)
+    {
+        testLives -= hitDamage;
+        for (int i = (testNumberOfHearts - 1); i > -1; i--)
+        {
+            Debug.Log($"{testLives} / {((heartLifeValue * (i + 1)) - heartLifeValue)}");
+            if (testLives <= ((heartLifeValue * (i + 1)) - heartLifeValue) )
+            {
+                instantiatedHearts[i].SetActive(false);
+                /*
+                if (!instantiatedHearts[i].activeInHierarchy)
+                {
+                    continue;
+                }
+                else
+                {
+                    instantiatedHearts[i].SetActive(false);
+                }
+                */
+            }
+            else if (testLives > ((heartLifeValue * (i + 1)) - heartLifeValue) &&
+                     testLives < (heartLifeValue * (i + 1)) )
+            {
+                if (testLives < (heartLifeValue * (i + 1)))
+                {
+                    RectTransform thisHeartsTransform = instantiatedHearts[i].GetComponent<RectTransform>();
+                    thisHeartsTransform.sizeDelta = new Vector2(
+                        32 * (testLives - (heartLifeValue * (i - 1)) / heartLifeValue),
+                        thisHeartsTransform.sizeDelta.y
+                        );
+                }
+                /*
+                else
+                {
+                    break;
+                }
+                */
+            }
         }
     }
 }
