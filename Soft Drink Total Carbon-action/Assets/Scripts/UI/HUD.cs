@@ -95,57 +95,60 @@ public class HUD : MonoBehaviour
 
     public void ReduceLifeDisplay(int hitDamage)
     {
+        // Test code (can be removed when properly integrating this function with gameplay mechanics)
         testLives -= hitDamage;
+
+        // Each heart holds a portion of a life variable. The range of this portion corresponds to the "heartLifeValue" variable,
+        // which is calculated in the InstantiateHearts function. So if we have a life variable of 700 and we have 7 hearts, that
+        // means that the first heart will hold the 0-100 range of the life variable, the second heart the 100-200 range, and so on.
+
+        // We use a "for" cycle to check for changes in every heart.
         for (int i = (testNumberOfHearts - 1); i > -1; i--)
         {
             if (testLives <= ((heartLifeValue * (i + 1)) - heartLifeValue))
             {
+                // If the player's life variable is smaller than the range of life in this heart (0-100, 100-200, etc)
+                // then we disable that heart/GameObject.
                 instantiatedHearts[i].SetActive(false);
-                /*
-                if (!instantiatedHearts[i].activeInHierarchy)
-                {
-                    continue;
-                }
-                else
-                {
-                    instantiatedHearts[i].SetActive(false);
-                }
-                */
             }
             else if (testLives > ((heartLifeValue * (i + 1)) - heartLifeValue) &&
                      testLives < (heartLifeValue * (i + 1)))
             {
-                if (testLives < (heartLifeValue * (i + 1)))
-                {
-                    RectTransform thisHeartsTransform = instantiatedHearts[i].GetComponent<RectTransform>();
+                // If the player's life variable is within the range of life in this heart (0-100, 100-200, etc)
+                // we grab the RectTransform of the parent GameObject to the heart sprite GameObject and we
+                // manipulate its width according to the amount of life that heart is supposed to hold.
+                // Because there's a Mask component in the heart parent GameObject and its pivot is to
+                // the left, manipulating the width will "cut" the heart from right to left.
+                RectTransform thisHeartsTransform = instantiatedHearts[i].GetComponent<RectTransform>();
                     Debug.Log($"{(testLives - (heartLifeValue * i)) / heartLifeValue}");
                     thisHeartsTransform.sizeDelta = new Vector2(
                         32 * ((testLives - (heartLifeValue * i)) / heartLifeValue),
                         thisHeartsTransform.sizeDelta.y
                         );
-                }
-                /*
-                else
-                {
-                    break;
-                }
-                */
             }
         }
     }
     public void ReduceWeaponMag()
     {
+        // Gun fire mechanic. In the test scene, this function is executed once per UI button click. 
         if (testCurrentBullets != 0) testCurrentBullets -= 1;
         else if (isGunReloading == false) StartCoroutine("ReloadWeapon");
     }
     IEnumerator ReloadWeapon()
     {
+        // Gun reload mechanic.
+        // First, we make the "isGunReloading" var true, so that the gun cannot be fired while it's reloading.
         isGunReloading = true;
+        // We show, through UI text, that the gun is reloading.
         testReloadText.text = "RELOAD";
+        // We wait some period before continuing this coroutine, to simulate a reloading delay.
         yield return new WaitForSeconds(2);
+        // Accordingly, we "use a new bullet magazine" and remove the amount of bullets we reloaded from the total bullets
         testCurrentBullets = weaponMagazineSize;
         testReloadBullets -= weaponMagazineSize;
+        // We update the weapon bullet part of the HUD.
         UpdateWeaponDisplay();
+        // And that's it.
         testReloadText.text = "";
         isGunReloading = false;
         yield return null;
