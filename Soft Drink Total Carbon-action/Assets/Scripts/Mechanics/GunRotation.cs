@@ -9,10 +9,6 @@ public class GunRotation : MonoBehaviour
     public Rigidbody2D player_rb;
     public Rigidbody2D rb;
 
-    public float xOffset = 0.5f;
-    public float yOffset = 0.3f;
-
-    // Update is called once per frame
     void Update()
     {
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
