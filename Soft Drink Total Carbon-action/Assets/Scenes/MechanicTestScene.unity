@@ -216,7 +216,6 @@ GameObject:
   m_Component:
   - component: {fileID: 751763355}
   - component: {fileID: 751763354}
-  - component: {fileID: 751763356}
   - component: {fileID: 751763357}
   m_Layer: 0
   m_Name: Gun
@@ -291,27 +290,6 @@ Transform:
   m_Father: {fileID: 1072024147}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &751763356
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 751763353}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!114 &751763357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,7 +304,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 698753583}
   player_rb: {fileID: 1072024148}
-  rb: {fileID: 751763356}
+  rb: {fileID: 0}
+  xOffset: 0.5
+  yOffset: 0.3
 --- !u!1 &771084818
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,22 +16,8 @@ public class GunRotation : MonoBehaviour
     void Update()
     {
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-
-        Vector2 Reference = player_rb.position;
-
-
-
-        rb.position = new Vector2(player_rb.position.x - xOffset, player_rb.position.y - yOffset);
-
-    }
-
-    private void FixedUpdate()
-    {
-        Vector2 lookDir = mousePos - rb.position;
-
+        Vector2 lookDir = mousePos - new Vector2(transform.position.x, transform.position.y);
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-
-        rb.rotation = angle;
-
+        transform.rotation = Quaternion.Euler(0,0,angle);
     }
 }
