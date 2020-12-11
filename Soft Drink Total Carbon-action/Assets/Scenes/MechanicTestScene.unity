@@ -305,8 +305,6 @@ MonoBehaviour:
   cam: {fileID: 698753583}
   player_rb: {fileID: 1072024148}
   rb: {fileID: 0}
-  xOffset: 0.5
-  yOffset: 0.3
 --- !u!1 &771084818
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,6 +479,7 @@ GameObject:
   - component: {fileID: 1072024148}
   - component: {fileID: 1072024149}
   - component: {fileID: 1072024150}
+  - component: {fileID: 1072024151}
   m_Layer: 0
   m_Name: shooter_guy
   m_TagString: Untagged
@@ -614,6 +613,25 @@ MonoBehaviour:
   firePoint: {fileID: 1051036583}
   bulletPrefab: {fileID: 8809926783632044467, guid: 03bb0b9c7b3a3174aa323cff30e1da93, type: 3}
   bulletForce: 10
+--- !u!95 &1072024151
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072024145}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 91a0605583d05c94e9e2dd4f33ebd904, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1144121520
 GameObject:
   m_ObjectHideFlags: 0
