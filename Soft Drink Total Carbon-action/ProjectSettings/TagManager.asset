@@ -13,14 +13,14 @@ TagManager:
   - UI
   - 
   - 
+  - Void
+  - Floor
+  - Obstacles
+  - Foreground
+  - 
+  - 
+  - 
   - MiniMap
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
   - 
   - 
   - 
@@ -41,8 +41,17 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Void
+    uniqueID: 1493884059
+    locked: 0
   - name: Background
     uniqueID: 821154457
+    locked: 0
+  - name: Floor
+    uniqueID: 1337782639
+    locked: 0
+  - name: Obstacles
+    uniqueID: 395773909
     locked: 0
   - name: Player
     uniqueID: 3301968141
@@ -50,6 +59,12 @@ TagManager:
   - name: Gun
     uniqueID: 4071586039
     locked: 0
+  - name: Foreground
+    uniqueID: 2016848971
+    locked: 0
   - name: 
     uniqueID: 3543676027
+    locked: 0
+  - name: Minimap
+    uniqueID: 1195636067
     locked: 0
