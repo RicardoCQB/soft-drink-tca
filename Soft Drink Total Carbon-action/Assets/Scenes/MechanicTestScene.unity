@@ -590,14 +590,7 @@ MonoBehaviour:
   rb: {fileID: 1072024148}
   cam: {fileID: 698753583}
   playerSprite: {fileID: 1072024146}
-  isDirUp: 0
-  isDirDown: 0
-  isDirRight: 0
-  isDirLeft: 0
-  isDirUpRight: 0
-  isDirUpLeft: 0
-  isDirDownRight: 0
-  isDirDownLeft: 0
+  playerAnimator: {fileID: 1072024151}
 --- !u!114 &1072024150
 MonoBehaviour:
   m_ObjectHideFlags: 0
