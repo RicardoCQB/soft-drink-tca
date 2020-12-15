@@ -17,11 +17,11 @@ TagManager:
   - Floor
   - Obstacles
   - Foreground
-  - 
-  - 
-  - 
+  - Bullet
+  - Player
+  - Enemy
   - MiniMap
-  - 
+  - EnemyBullet
   - 
   - 
   - 
@@ -55,6 +55,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3301968141
+    locked: 0
+  - name: Enemies
+    uniqueID: 763831779
     locked: 0
   - name: Gun
     uniqueID: 4071586039
