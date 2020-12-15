@@ -10,24 +10,53 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Camera cam;
     public SpriteRenderer playerSprite;
+    public Animator playerAnimator;
 
-    // These booleans are responsible for detecting which sprite and animation to use for the character movement.
-    public bool isDirUp, isDirDown, isDirRight, isDirLeft = false;
-    public bool isDirUpRight, isDirUpLeft, isDirDownRight, isDirDownLeft = false;
+
+    private string currentState;
+    private bool isWalking;
+
+    // Player animation states
+    const string FRONT_IDLE = "Front_Idle";
+    const string BACK_IDLE = "Back_Idle";
+    const string FRONT_LEFT_IDLE = "FrontLeft_Idle";
+    const string FRONT_RIGHT_IDLE = "FrontRight_Idle";
+    const string BACK_LEFT_IDLE = "BackLeft_Idle";
+    const string BACK_RIGHT_IDLE = "BackRight_Idle";
+
+    const string FRONT_WALKING = "Front_Walking";
+    const string BACK_WALKING = "Back_Walking";
+    const string LEFT_FRONT_WALKING = "LeftFront_Walking";
+    const string RIGHT_FRONT_WALKING = "RightFront_Walking";
+    const string LEFT_BACK_WALKING = "LeftBack_Walking";
+    const string RIGHT_BACK_WALKING = "RightBack_Walking";
 
     Vector2 movement;
     Vector2 mousePos;
-   
-    
+
+
+    private void Start()
+    {
+        playerAnimator = GetComponent<Animator>();
+        playerAnimator.Play(FRONT_IDLE);
+    }
+
     void Update()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
+        if (movement.x != 0 || movement.y != 0)
+            isWalking = true;
+        else
+            isWalking = false;
+
         // Moves the player in the level
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
 
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+
+        
     }
 
     private void FixedUpdate()
@@ -37,21 +66,49 @@ public class PlayerMovement : MonoBehaviour
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
         //Debug.Log("\nAngle: " + angle);
 
-        if (angle > -25f && angle <= 25f)
-            isDirLeft = true;
-        else if (angle > 25f && angle <= 65f)
-            isDirUpLeft = true;
-        else if (angle > 65f && angle <= 115f)
-            isDirUp = true;
-        else if (angle > 115f && angle <= 155f)
-            isDirUpRight = true;
-        else if ((angle > 155f && angle <= 180f) || (angle > -180f && angle <= -155f))
-            isDirRight = true;
-        else if (angle > -155f && angle <= -115f)
-            isDirDownRight = true;
-        else if (angle > -115f && angle <= -65f)
-            isDirDown = true;
-        else if (angle > -65f && angle <= -25f)
-            isDirDownLeft = true;
+        if (isWalking)
+        {
+            if (angle > -65f && angle <= 0f)
+                ChangeAnimationState(RIGHT_FRONT_WALKING);
+            else if (angle > 0f && angle <= 65f)
+                ChangeAnimationState(RIGHT_BACK_WALKING);
+            else if (angle > 65f && angle <= 115f)
+                ChangeAnimationState(BACK_WALKING);
+            else if (angle > 115f && angle <= 180f)
+                ChangeAnimationState(LEFT_BACK_WALKING);
+            else if (angle > -180f && angle <= -115f)
+                ChangeAnimationState(LEFT_FRONT_WALKING);
+            else if (angle > -115f && angle <= -65f)
+                ChangeAnimationState(FRONT_WALKING);
+        }
+
+        if (!isWalking)
+        {
+            if (angle > -65f && angle <= 0f)
+                ChangeAnimationState(FRONT_RIGHT_IDLE);
+            else if (angle > 0f && angle <= 65f)
+                ChangeAnimationState(BACK_RIGHT_IDLE);
+            else if (angle > 65f && angle <= 115f)
+                ChangeAnimationState(BACK_IDLE);
+            else if (angle > 115f && angle <= 180f)
+                ChangeAnimationState(BACK_LEFT_IDLE);
+            else if (angle > -180f && angle <= -115f)
+                ChangeAnimationState(FRONT_LEFT_IDLE);
+            else if (angle > -115f && angle <= -65f)
+                ChangeAnimationState(FRONT_IDLE);
+        }
+
+    }
+
+    void ChangeAnimationState(string newState)
+    {
+        // If the current state is already playing, the function does nothing.
+        if (currentState == newState) return;
+
+        // Plays the animation state passed as a parameter.
+        playerAnimator.Play(newState);
+
+        // Updates the current state animation.
+        currentState = newState;
     }
 }
