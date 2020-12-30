@@ -6,8 +6,12 @@ public class Health : MonoBehaviour
 {
     public int health=10;
     public GameObject enemyBullet;
+    HUD hud;
 
-
+    private void Start()
+    {
+        hud = gameObject.GetComponent<HUD>();
+    }
     private void Update()
     {
         if(health <=0)
@@ -21,6 +25,7 @@ public class Health : MonoBehaviour
     {
         if(collision.gameObject.tag=="EnemyBullet")
         {
+            hud.ReduceLifeDisplay(20);
             health--;
         }    
     }
