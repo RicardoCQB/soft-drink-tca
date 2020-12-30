@@ -1216,7 +1216,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -149.11108, y: 43.33333}
+  m_AnchoredPosition: {x: -352, y: 100}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &271071244
@@ -3980,6 +3980,8 @@ GameObject:
   - component: {fileID: 1072024150}
   - component: {fileID: 1072024151}
   - component: {fileID: 1072024152}
+  - component: {fileID: 1072024153}
+  - component: {fileID: 1072024154}
   m_Layer: 13
   m_Name: shooter_guy
   m_TagString: Player
@@ -4151,6 +4153,44 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.38604, y: 0.9122119}
   m_EdgeRadius: 0
+--- !u!114 &1072024153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072024145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3d858a2ce0387b488f306b5cae64719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  testCurrentBullets: 10
+  testReloadBullets: 100
+  testReloadText: {fileID: 1008436170}
+  bulletsText: {fileID: 981301303}
+  testOwnedCoins: 5000000
+  coinsText: {fileID: 1514043747}
+  testParentObject: {fileID: 1626427295}
+  testInitialPivot: {fileID: 779270800}
+  testNewHeartPositionOffset: 55
+  testLives: 100
+  testNumberOfHearts: 5
+  heartPrefab: {fileID: 2816007974591245144, guid: 75a388a3d1426ae46b394cbcb406d0ca, type: 3}
+--- !u!114 &1072024154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072024145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac47290663dd9842b3542bd84dbd021, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
+  enemyBullet: {fileID: 5824302977754596764, guid: 60823f7bbb5cbe0479971d878d9f27c4, type: 3}
 --- !u!1 &1130119431
 GameObject:
   m_ObjectHideFlags: 0
@@ -9458,7 +9498,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -149.11108, y: 62.000015}
+  m_AnchoredPosition: {x: -354, y: 117}
   m_SizeDelta: {x: 1920.0002, y: 150}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1626427296
@@ -9547,7 +9587,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 149.11108, y: -61.999992}
+  m_AnchoredPosition: {x: 349, y: -133}
   m_SizeDelta: {x: 355, y: 375}
   m_Pivot: {x: 1, y: 0}
 --- !u!1 &2052307503
