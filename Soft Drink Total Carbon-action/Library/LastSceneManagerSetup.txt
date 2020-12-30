@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/LivesReloadScene.unity
+- path: Assets/Scenes/DialogSystemTest.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
