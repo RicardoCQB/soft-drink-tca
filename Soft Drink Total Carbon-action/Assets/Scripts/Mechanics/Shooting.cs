@@ -6,15 +6,22 @@ public class Shooting : MonoBehaviour
 {
     public Transform firePoint;
     public GameObject bulletPrefab;
-
+    private HUD hud;
 
     public float bulletForce = 10f;
+
+    private void Start()
+    {
+        hud = gameObject.GetComponent<HUD>();
+    }
 
     void Update()
     {
         if(Input.GetButtonDown("Fire1"))
         {
             Shoot();
+            hud.ReduceWeaponMag();
+            hud.UpdateWeaponDisplay();
         }
         
     }
