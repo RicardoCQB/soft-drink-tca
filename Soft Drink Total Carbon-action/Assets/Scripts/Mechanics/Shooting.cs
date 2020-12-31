@@ -9,19 +9,24 @@ public class Shooting : MonoBehaviour
     private HUD hud;
 
     public float bulletForce = 10f;
+    public bool bulletsAvailable;
 
     private void Start()
     {
         hud = gameObject.GetComponent<HUD>();
+        bulletsAvailable = true;
     }
 
     void Update()
     {
-        if(Input.GetButtonDown("Fire1"))
+        if (bulletsAvailable == true)
         {
-            Shoot();
-            hud.ReduceWeaponMag();
-            hud.UpdateWeaponDisplay();
+            if (Input.GetButtonDown("Fire1"))
+            {
+                Shoot();
+                hud.ReduceWeaponMag();
+                hud.UpdateWeaponDisplay();
+            }
         }
         
     }
@@ -36,5 +41,15 @@ public class Shooting : MonoBehaviour
         rb.AddForce(firePoint.right * bulletForce, ForceMode2D.Impulse);
 
         
+    }
+
+    public void StopShooting()
+    {
+        bulletsAvailable = false;
+    }
+
+    public void StartShooting()
+    {
+        bulletsAvailable = true;
     }
 }

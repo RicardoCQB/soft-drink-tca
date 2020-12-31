@@ -14,6 +14,7 @@ public class HUD : MonoBehaviour
     [SerializeField] Text bulletsText;
     int weaponMagazineSize;
     bool isGunReloading = false;
+    private Shooting shooting;
 
     [Header("Coins")]
     // Test variables:
@@ -40,6 +41,8 @@ public class HUD : MonoBehaviour
 
     private void Start()
     {
+        shooting = gameObject.GetComponent<Shooting>();
+
         weaponMagazineSize = testCurrentBullets;
         testReloadText.text = "";
 
@@ -136,6 +139,7 @@ public class HUD : MonoBehaviour
     }
     IEnumerator ReloadWeapon()
     {
+        shooting.StopShooting();
         // Gun reload mechanic.
         // First, we make the "isGunReloading" var true, so that the gun cannot be fired while it's reloading.
         isGunReloading = true;
@@ -151,6 +155,7 @@ public class HUD : MonoBehaviour
         // And that's it.
         testReloadText.text = "";
         isGunReloading = false;
+        shooting.StartShooting();
         yield return null;
     }
     public void UpdateWeaponDisplay()
