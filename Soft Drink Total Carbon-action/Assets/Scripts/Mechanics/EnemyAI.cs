@@ -7,6 +7,7 @@ public class EnemyAI : MonoBehaviour
     public float speed;
     public float stoppingDistance;
     public float retreatDistance;
+    public int health=10;
 
     private float timeBetweenShots;
     public float startTimeBetweenShots;
@@ -25,6 +26,13 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
+        //HEALTH MANAGMENT
+        if(health<=0)
+        {
+            Destroy(gameObject);
+        }
+
+
         playerAlive=GameObject.FindGameObjectWithTag("Player");
 
         if(playerAlive)
@@ -60,5 +68,14 @@ public class EnemyAI : MonoBehaviour
 
             }
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
+        if (collision.gameObject.tag == "Bullet")
+        {
+            health--;
+        }
     }
 }
