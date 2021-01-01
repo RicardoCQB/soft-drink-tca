@@ -59,7 +59,9 @@ public class EnemyAI : MonoBehaviour
         playerAlive=GameObject.FindGameObjectWithTag("Player");
 
         if(playerAlive)
-        { 
+        {
+            isWalking = true;
+
             //ENEMY MOVEMENT
             if (Vector2.Distance(transform.position, player.position) > stoppingDistance)
             {
@@ -76,7 +78,7 @@ public class EnemyAI : MonoBehaviour
             {
                 transform.position = Vector2.MoveTowards(transform.position, player.position,
                                                                    -speed * Time.deltaTime);
-            }
+            }            
 
             //ENEMY SHOOTING
             if (timeBetweenShots <= 0)
@@ -89,7 +91,11 @@ public class EnemyAI : MonoBehaviour
                 timeBetweenShots -= Time.deltaTime;
             }
 
-            }
+        }
+        else
+        {
+            isWalking = false;
+        }
 
     }
 
