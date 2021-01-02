@@ -1,0 +1,9 @@
+Esta pasta contém objetos que não são 32x32, exclusivamente para ver como é suposto ficar.
+Para implementar, combinar o tile 32x32 de baixo com o de cima
+
+⬆biglocacontainertubestop	⬆coltop
+⬇biglocacontainertubesbottom	⬇colbottom
+
+APENAS OS BOTTOM SÃO PARA COLIDIR (estão na pasta "Meant to collide")
+
+
