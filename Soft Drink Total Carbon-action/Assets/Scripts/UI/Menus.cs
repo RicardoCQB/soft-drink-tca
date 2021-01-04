@@ -5,14 +5,6 @@ using UnityEngine.SceneManagement; // Library added speicfically for this script
 
 public class Menus : MonoBehaviour
 {
-    public void EnableGameObject(GameObject gameObject)
-    {
-        gameObject.SetActive(true);
-    }
-    public void DisableGameObject(GameObject gameObject)
-    {
-        gameObject.SetActive(false);
-    }
     public void LoadScene(string sceneToLoad)
     {
         // This will replace the active scene with the one you want to load.
