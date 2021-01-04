@@ -365,7 +365,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 464435481}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5499c7218c9212a469afc8aa56ae6330, type: 3}
+  m_Script: {fileID: 11500000, guid: 1788374c7e908c24dacd90b829e70e1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &717990300
@@ -843,7 +843,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Go to Second Menu
+  m_Text: Level Select
 --- !u!222 &1648398553
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1136,7 +1136,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: DialogSystemTest
+          m_StringArgument: MechanicTestScene
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1929927849
@@ -1319,7 +1319,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Load Scene
+  m_Text: Start Game
 --- !u!222 &2036025343
 CanvasRenderer:
   m_ObjectHideFlags: 0
