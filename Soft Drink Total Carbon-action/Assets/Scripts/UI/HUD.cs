@@ -41,7 +41,7 @@ public class HUD : MonoBehaviour
 
     private void Start()
     {
-        ChangeHeartDisplay(testInitialPivot);
+        ChangeHeartsToNewParent(testInitialPivot);
 
 
         shooting = gameObject.GetComponent<Shooting>();
@@ -81,7 +81,7 @@ public class HUD : MonoBehaviour
         // It changes the parent object to whom the hearts should belong.
         testParentObject = newParentObject;
     }
-    public void ChangeHeartDisplay(Transform newInitial)
+    public void ChangeHeartsToNewParent(Transform newInitial)
     {
         Vector3 testOffsetVectorThree;
         int testHeartCount = 0;
@@ -117,11 +117,20 @@ public class HUD : MonoBehaviour
         }
     }
 
-    public void ReduceLifeDisplay(int hitDamage)
+    public void ReduceLife(int hitDamage)
     {
-        // Test code (can be removed when properly integrating this function with gameplay mechanics)
+        // Test function (can be removed when properly integrating HUD with gameplay mechanics)
         testLives -= hitDamage;
+    }
+    public void IncreaseLife(int lifeIncrementAmount)
+    {
+        // Test function to testh the store functionality
+        // (can be removed when properly integrating HUD with gameplay mechanics)
+        testLives += lifeIncrementAmount;
+    }
 
+    public void UpdateLifeDisplay()
+    {
         // Each heart holds a portion of a life variable. The range of this portion corresponds to the "heartLifeValue" variable,
         // which is calculated in the InstantiateHearts function. So if we have a life variable of 700 and we have 7 hearts, that
         // means that the first heart will hold the 0-100 range of the life variable, the second heart the 100-200 range, and so on.
