@@ -7,6 +7,7 @@ public class HUD : MonoBehaviour
 {
     [SerializeField] bool debugMode = false;
 
+
     [Header("Shoot/Reload")]
     // Test variables:
     [SerializeField] int testCurrentBullets;
@@ -31,6 +32,7 @@ public class HUD : MonoBehaviour
     [SerializeField] float testNewHeartPositionOffset;
     [SerializeField] int testLives;
     [SerializeField] int testNumberOfHearts;
+    int testInitialLives;
     // Variables that will probably stay:
     [SerializeField] GameObject heartPrefab;
     List<GameObject> instantiatedHearts;
@@ -43,6 +45,8 @@ public class HUD : MonoBehaviour
 
     private void Start()
     {
+        testInitialLives = testLives;
+
         if (debugMode)
         {
             ReduceLife(80);
@@ -129,18 +133,34 @@ public class HUD : MonoBehaviour
         // Test function (can be removed when properly integrating HUD with gameplay mechanics)
         testLives -= hitDamage;
     }
+    public void SetLifeValue(int lifeValue)
+    {
+        // Function to test the store functionality
+        // (can be removed when properly integrating HUD with gameplay mechanics)
+        testLives = lifeValue;
+    }
+    public void SetCoinsValue(int coinsValue)
+    {
+        // Function to test the store functionality
+        // (can be removed when properly integrating HUD with gameplay mechanics)
+        testOwnedCoins = coinsValue;
+    }
     public void IncreaseLife(int lifeIncrementAmount)
     {
-        // Test function to testh the store functionality
-        // (can be removed when properly integrating HUD with gameplay mechanics)
-        /*
-        if (testLives + lifeIncrementAmount >= heartLifeValue * testNumberOfHearts)
+        // Store functionality
+        if (testLives + lifeIncrementAmount > testInitialLives)
         {
-            testLives += (lifeIncrementAmount - testLives);
+            testLives = testInitialLives;
         }
         else testLives += lifeIncrementAmount;
-        */
-        testLives += lifeIncrementAmount;
+    }
+    public void PayPopTabs(int cost)
+    {
+        // Store functionality
+        if ((testOwnedCoins - cost) >= 0)
+        {
+            testOwnedCoins -= cost;
+        }
     }
 
     public void UpdateLifeDisplay()
@@ -174,6 +194,7 @@ public class HUD : MonoBehaviour
                         thisHeartsTransform.sizeDelta.y
                         );
             }
+            else instantiatedHearts[i].SetActive(true);
         }
     }
     public void ReduceWeaponMag()
