@@ -5,6 +5,8 @@ using UnityEngine.UI; // Library added speicfically for this script.
 
 public class HUD : MonoBehaviour
 {
+    [SerializeField] bool debugMode = false;
+
     [Header("Shoot/Reload")]
     // Test variables:
     [SerializeField] int testCurrentBullets;
@@ -41,6 +43,11 @@ public class HUD : MonoBehaviour
 
     private void Start()
     {
+        if (debugMode)
+        {
+            ReduceLife(80);
+            UpdateLifeDisplay();
+        }
         ChangeHeartsToNewParent(testInitialPivot);
 
 
@@ -126,6 +133,13 @@ public class HUD : MonoBehaviour
     {
         // Test function to testh the store functionality
         // (can be removed when properly integrating HUD with gameplay mechanics)
+        /*
+        if (testLives + lifeIncrementAmount >= heartLifeValue * testNumberOfHearts)
+        {
+            testLives += (lifeIncrementAmount - testLives);
+        }
+        else testLives += lifeIncrementAmount;
+        */
         testLives += lifeIncrementAmount;
     }
 
@@ -152,6 +166,7 @@ public class HUD : MonoBehaviour
                 // manipulate its width according to the amount of life that heart is supposed to hold.
                 // Because there's a Mask component in the heart parent GameObject and its pivot is to
                 // the left, manipulating the width will "cut" the heart from right to left.
+                instantiatedHearts[i].SetActive(true);
                 RectTransform thisHeartsTransform = instantiatedHearts[i].GetComponent<RectTransform>();
                     Debug.Log($"{(testLives - (heartLifeValue * i)) / heartLifeValue}");
                     thisHeartsTransform.sizeDelta = new Vector2(

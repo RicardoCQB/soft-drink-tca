@@ -783,6 +783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3d858a2ce0387b488f306b5cae64719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugMode: 1
   testCurrentBullets: 10
   testReloadBullets: 100
   testReloadText: {fileID: 1397988049}
@@ -2042,7 +2043,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 464435487}
         m_TargetAssemblyTypeName: HUD, Assembly-CSharp
-        m_MethodName: ChangeHeartDisplay
+        m_MethodName: ChangeHeartsToNewParent
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1880743075}
