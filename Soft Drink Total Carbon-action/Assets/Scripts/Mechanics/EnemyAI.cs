@@ -18,7 +18,7 @@ public class EnemyAI : MonoBehaviour
     public  Rigidbody2D playerRB;
     public Animator enemyAnimator;
 
-    bool playerAlive = true;
+    bool playerAlive;
 
     private string currentState;
     private bool isWalking;
@@ -45,6 +45,8 @@ public class EnemyAI : MonoBehaviour
 
         enemyAnimator = GetComponent<Animator>();
         enemyAnimator.Play(FRONT_WALKING);
+
+        playerAlive = true;
     }
 
     private void Update()
@@ -57,9 +59,11 @@ public class EnemyAI : MonoBehaviour
 
 
         playerAlive=GameObject.FindGameObjectWithTag("Player");
+        
 
         if(playerAlive)
         {
+
             isWalking = true;
 
             //ENEMY MOVEMENT
@@ -95,29 +99,33 @@ public class EnemyAI : MonoBehaviour
         else
         {
             isWalking = false;
+            playerAlive = false;
         }
 
     }
 
     private void FixedUpdate()
     {
-        Vector2 lookDir = playerRB.position;
+        if (playerAlive)
+        {
+            Vector2 lookDir = playerRB.position;
 
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-        //Debug.Log("\nAngle: " + angle);
+            float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+            //Debug.Log("\nAngle: " + angle);
 
-        if (angle > -65f && angle <= 0f)
-            ChangeAnimationState(RIGHT_FRONT_WALKING);
-        else if (angle > 0f && angle <= 65f)
-            ChangeAnimationState(RIGHT_BACK_WALKING);
-        else if (angle > 65f && angle <= 115f)
-            ChangeAnimationState(BACK_WALKING);
-        else if (angle > 115f && angle <= 180f)
-            ChangeAnimationState(LEFT_BACK_WALKING);
-        else if (angle > -180f && angle <= -115f)
-            ChangeAnimationState(LEFT_FRONT_WALKING);
-        else if (angle > -115f && angle <= -65f)
-            ChangeAnimationState(FRONT_WALKING);
+            if (angle > -65f && angle <= 0f)
+                ChangeAnimationState(RIGHT_FRONT_WALKING);
+            else if (angle > 0f && angle <= 65f)
+                ChangeAnimationState(RIGHT_BACK_WALKING);
+            else if (angle > 65f && angle <= 115f)
+                ChangeAnimationState(BACK_WALKING);
+            else if (angle > 115f && angle <= 180f)
+                ChangeAnimationState(LEFT_BACK_WALKING);
+            else if (angle > -180f && angle <= -115f)
+                ChangeAnimationState(LEFT_FRONT_WALKING);
+            else if (angle > -115f && angle <= -65f)
+                ChangeAnimationState(FRONT_WALKING);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
