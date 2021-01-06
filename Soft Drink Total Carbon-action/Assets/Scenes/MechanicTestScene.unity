@@ -2145,10 +2145,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
+  - name: BulletPop
+    clip: {fileID: 8300000, guid: 1958105c65df73a4787bb84df7fca040, type: 3}
+    volume: 0.362
+    pitch: 0.73
     source: {fileID: 0}
 --- !u!1 &2027157261
 GameObject:
