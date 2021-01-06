@@ -5,6 +5,9 @@ using UnityEngine.UI; // Library added speicfically for this script.
 
 public class HUD : MonoBehaviour
 {
+    [SerializeField] bool debugMode = false;
+
+
     [Header("Shoot/Reload")]
     // Test variables:
     [SerializeField] int testCurrentBullets;
@@ -29,6 +32,7 @@ public class HUD : MonoBehaviour
     [SerializeField] float testNewHeartPositionOffset;
     [SerializeField] int testLives;
     [SerializeField] int testNumberOfHearts;
+    int testInitialLives;
     // Variables that will probably stay:
     [SerializeField] GameObject heartPrefab;
     List<GameObject> instantiatedHearts;
@@ -41,6 +45,16 @@ public class HUD : MonoBehaviour
 
     private void Start()
     {
+        testInitialLives = testLives;
+
+        if (debugMode)
+        {
+            ReduceLife(80);
+            UpdateLifeDisplay();
+        }
+        ChangeHeartsToNewParent(testInitialPivot);
+
+
         shooting = gameObject.GetComponent<Shooting>();
 
         weaponMagazineSize = testCurrentBullets;
@@ -55,19 +69,43 @@ public class HUD : MonoBehaviour
 
 
     //// Script-specific functions:
-
     void InstantiateHearts()
     {
         instantiatedHearts = new List<GameObject>();
-        Vector3 testOffsetVectorThree;
-        int testHeartCount = 0;
 
         // We use a "for" cycle to instantiate all the hearts we want.
         for (int i = 0; i < testNumberOfHearts; i++)
         {
-            // Each of the hearts will have a different X-position than the others, so we must calculate it before we instantiate.
+            // We make a new instance of the heart prefab, with no rotation. Then, we add each new instance to a list,
+            // so that we are able to manipulate them according to the player's current lives at any moment.
+            GameObject temp = Instantiate(heartPrefab, Vector3.zero, Quaternion.Euler(0, 0, 0));
+            instantiatedHearts.Add(temp);
+        }
 
-            // First, we have the "testInitialPivot". This is an empty GameObject that we place in the Editor to determine
+        heartLifeValue = (testLives / testNumberOfHearts);
+    }
+    public void ChangeHeartParentObject(Transform newParentObject)
+    {
+        // This function ALWAYS has to be executed before the "ChangeHeartDisplay" function,
+        // but it doesn't have to be executed at all if the parent object to place the hearts in
+        // will not be changed
+        // It changes the parent object to whom the hearts should belong.
+        testParentObject = newParentObject;
+    }
+    public void ChangeHeartsToNewParent(Transform newInitial)
+    {
+        Vector3 testOffsetVectorThree;
+        int testHeartCount = 0;
+        Transform testFirstPivot = newInitial;
+
+        for (int i = 0; i < testNumberOfHearts; i++)
+        {
+            // We increment "testHeartCount" in preparation for the next heart to be changed.
+            testHeartCount += 1;
+
+            // Each of the hearts will have a different X-position than the others, so we must calculate it.
+
+            // First, we have the "testInitialPivot" object. This is an empty GameObject that we place in the Editor to determine
             // the position in which the first heart will be placed. We use the Y-position of this GameObject as the
             // Y-position for all the hearts. However, for the X-position, only the first heart reuses the value from
             // this pivot. For the rest of them, we add an offset value to that pivot's X-position value.
@@ -77,30 +115,56 @@ public class HUD : MonoBehaviour
             // heart we want to instance.
             // This is why the offset value does not affect the first heart: "testHeartCount" is initially at zero.
             testOffsetVectorThree = new Vector3(
-                testInitialPivot.position.x + (testNewHeartPositionOffset * testHeartCount),
-                testInitialPivot.position.y,
+                testFirstPivot.position.x + (testNewHeartPositionOffset * i),
+                testFirstPivot.position.y,
                 0
             );
-            // After we calculate the position where each instantiated heart will be placed, we increment "testHeartCount"
-            // in preparation for the next heart to be instanced.
-            testHeartCount += 1;
 
-            // We make a new instance of the heart prefab, with the position we previously calculated, with no rotation
-            // and we make it a child of the "HeartGroup" object in the Canvas.
-            // Then, we add each new instance to a list, so that we are able to manipulate them according to the player's
-            // current lives at any moment.
-            GameObject temp = Instantiate(heartPrefab, testOffsetVectorThree, Quaternion.Euler(0, 0, 0), testParentObject);
-            instantiatedHearts.Add(temp);
+            // We change the parent object for each instantiated heart:
+            instantiatedHearts[i].transform.SetParent(testParentObject, false);
+
+            // 
+            instantiatedHearts[i].transform.position = testOffsetVectorThree;
         }
-
-        heartLifeValue = (testLives / testNumberOfHearts);
     }
 
-    public void ReduceLifeDisplay(int hitDamage)
+    public void ReduceLife(int hitDamage)
     {
-        // Test code (can be removed when properly integrating this function with gameplay mechanics)
+        // Test function (can be removed when properly integrating HUD with gameplay mechanics)
         testLives -= hitDamage;
+    }
+    public void SetLifeValue(int lifeValue)
+    {
+        // Function to test the store functionality
+        // (can be removed when properly integrating HUD with gameplay mechanics)
+        testLives = lifeValue;
+    }
+    public void SetCoinsValue(int coinsValue)
+    {
+        // Function to test the store functionality
+        // (can be removed when properly integrating HUD with gameplay mechanics)
+        testOwnedCoins = coinsValue;
+    }
+    public void IncreaseLife(int lifeIncrementAmount)
+    {
+        // Store functionality
+        if (testLives + lifeIncrementAmount > testInitialLives)
+        {
+            testLives = testInitialLives;
+        }
+        else testLives += lifeIncrementAmount;
+    }
+    public void PayPopTabs(int cost)
+    {
+        // Store functionality
+        if ((testOwnedCoins - cost) >= 0)
+        {
+            testOwnedCoins -= cost;
+        }
+    }
 
+    public void UpdateLifeDisplay()
+    {
         // Each heart holds a portion of a life variable. The range of this portion corresponds to the "heartLifeValue" variable,
         // which is calculated in the InstantiateHearts function. So if we have a life variable of 700 and we have 7 hearts, that
         // means that the first heart will hold the 0-100 range of the life variable, the second heart the 100-200 range, and so on.
@@ -122,6 +186,7 @@ public class HUD : MonoBehaviour
                 // manipulate its width according to the amount of life that heart is supposed to hold.
                 // Because there's a Mask component in the heart parent GameObject and its pivot is to
                 // the left, manipulating the width will "cut" the heart from right to left.
+                instantiatedHearts[i].SetActive(true);
                 RectTransform thisHeartsTransform = instantiatedHearts[i].GetComponent<RectTransform>();
                     Debug.Log($"{(testLives - (heartLifeValue * i)) / heartLifeValue}");
                     thisHeartsTransform.sizeDelta = new Vector2(
@@ -129,6 +194,7 @@ public class HUD : MonoBehaviour
                         thisHeartsTransform.sizeDelta.y
                         );
             }
+            else instantiatedHearts[i].SetActive(true);
         }
     }
     public void ReduceWeaponMag()
@@ -163,5 +229,11 @@ public class HUD : MonoBehaviour
         // Updates the display of the user's available bullets to shoot and the ones available to reload.
         // Trigering this function is probably a bit more efficient than running this code every frame.
         bulletsText.text = $"{testCurrentBullets}/{testReloadBullets}";
+    }
+    public void UpdateCoinDisplay(Text specificCoinText)
+    {
+        // Updates the display of any text showing the user's avaliable coins.
+        // Trigering this function is probably a bit more efficient than running this code every frame.
+        specificCoinText.text = $"{testOwnedCoins}";
     }
 }

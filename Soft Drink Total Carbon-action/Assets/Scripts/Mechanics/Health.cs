@@ -25,7 +25,8 @@ public class Health : MonoBehaviour
     {
         if(collision.gameObject.tag=="EnemyBullet")
         {
-            hud.ReduceLifeDisplay(20);
+            hud.ReduceLife(20);
+            hud.UpdateLifeDisplay();
             health--;
         }    
     }
