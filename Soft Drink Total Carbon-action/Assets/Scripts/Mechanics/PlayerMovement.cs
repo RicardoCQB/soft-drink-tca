@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events; // Library added to this script
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public SpriteRenderer playerSprite;
     public Animator playerAnimator;
 
+    public UnityEvent openStore;
 
     private string currentState;
     private bool isWalking;
@@ -112,5 +114,14 @@ public class PlayerMovement : MonoBehaviour
 
         // Updates the current state animation.
         currentState = newState;
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        // In "GetMouseButtonDown", an int value of 0 is the left button and 1 is the right button.
+        if (collision.tag == "Shopkeeper" && Input.GetMouseButtonDown(0))
+        {
+            openStore.Invoke();
+        }
     }
 }

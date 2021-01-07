@@ -8,13 +8,13 @@ public class Health : MonoBehaviour
     public GameObject enemyBullet;
     HUD hud;
 
-    private void Start()
+    private void Awake()
     {
         hud = gameObject.GetComponent<HUD>();
     }
     private void Update()
     {
-        if(health <=0)
+        if(health <= 0)
         {
             Destroy(gameObject);
         }
@@ -25,10 +25,21 @@ public class Health : MonoBehaviour
     {
         if(collision.gameObject.tag=="EnemyBullet")
         {
-            hud.ReduceLife(20);
-            hud.UpdateLifeDisplay();
             health--;
+            hud.UpdateLifeDisplay();
         }    
+    }
+
+    public void IncreaseHealth(int healthIncrement)
+    {
+        // This function is used in the stop, to allow for the health to be increased
+        // when the player buys hearts.
+
+        if (health + healthIncrement >= 5)
+        {
+            health = 5;
+        }
+        else health += healthIncrement; 
     }
 
 }

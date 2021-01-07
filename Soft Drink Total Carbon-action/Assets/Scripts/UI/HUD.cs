@@ -30,28 +30,22 @@ public class HUD : MonoBehaviour
     [SerializeField] Transform testParentObject;
     [SerializeField] Transform testInitialPivot;
     [SerializeField] float testNewHeartPositionOffset;
-    [SerializeField] int testLives;
-    [SerializeField] int testNumberOfHearts;
     int testInitialLives;
     // Variables that will probably stay:
     [SerializeField] GameObject heartPrefab;
     List<GameObject> instantiatedHearts;
-    float heartLifeValue;
+    int numberOfHearts;
+    private Health playerHealth;
 
     private void Awake()
     {
+        playerHealth = gameObject.GetComponent<Health>();
+        numberOfHearts = playerHealth.health;
         InstantiateHearts();
     }
 
     private void Start()
     {
-        testInitialLives = testLives;
-
-        if (debugMode)
-        {
-            ReduceLife(80);
-            UpdateLifeDisplay();
-        }
         ChangeHeartsToNewParent(testInitialPivot);
 
 
@@ -74,15 +68,13 @@ public class HUD : MonoBehaviour
         instantiatedHearts = new List<GameObject>();
 
         // We use a "for" cycle to instantiate all the hearts we want.
-        for (int i = 0; i < testNumberOfHearts; i++)
+        for (int i = 0; i < numberOfHearts; i++)
         {
             // We make a new instance of the heart prefab, with no rotation. Then, we add each new instance to a list,
             // so that we are able to manipulate them according to the player's current lives at any moment.
             GameObject temp = Instantiate(heartPrefab, Vector3.zero, Quaternion.Euler(0, 0, 0));
             instantiatedHearts.Add(temp);
         }
-
-        heartLifeValue = (testLives / testNumberOfHearts);
     }
     public void ChangeHeartParentObject(Transform newParentObject)
     {
@@ -95,14 +87,10 @@ public class HUD : MonoBehaviour
     public void ChangeHeartsToNewParent(Transform newInitial)
     {
         Vector3 testOffsetVectorThree;
-        int testHeartCount = 0;
         Transform testFirstPivot = newInitial;
 
-        for (int i = 0; i < testNumberOfHearts; i++)
+        for (int i = 0; i < numberOfHearts; i++)
         {
-            // We increment "testHeartCount" in preparation for the next heart to be changed.
-            testHeartCount += 1;
-
             // Each of the hearts will have a different X-position than the others, so we must calculate it.
 
             // First, we have the "testInitialPivot" object. This is an empty GameObject that we place in the Editor to determine
@@ -128,32 +116,6 @@ public class HUD : MonoBehaviour
         }
     }
 
-    public void ReduceLife(int hitDamage)
-    {
-        // Test function (can be removed when properly integrating HUD with gameplay mechanics)
-        testLives -= hitDamage;
-    }
-    public void SetLifeValue(int lifeValue)
-    {
-        // Function to test the store functionality
-        // (can be removed when properly integrating HUD with gameplay mechanics)
-        testLives = lifeValue;
-    }
-    public void SetCoinsValue(int coinsValue)
-    {
-        // Function to test the store functionality
-        // (can be removed when properly integrating HUD with gameplay mechanics)
-        testOwnedCoins = coinsValue;
-    }
-    public void IncreaseLife(int lifeIncrementAmount)
-    {
-        // Store functionality
-        if (testLives + lifeIncrementAmount > testInitialLives)
-        {
-            testLives = testInitialLives;
-        }
-        else testLives += lifeIncrementAmount;
-    }
     public void PayPopTabs(int cost)
     {
         // Store functionality
@@ -165,36 +127,17 @@ public class HUD : MonoBehaviour
 
     public void UpdateLifeDisplay()
     {
-        // Each heart holds a portion of a life variable. The range of this portion corresponds to the "heartLifeValue" variable,
-        // which is calculated in the InstantiateHearts function. So if we have a life variable of 700 and we have 7 hearts, that
-        // means that the first heart will hold the 0-100 range of the life variable, the second heart the 100-200 range, and so on.
-
         // We use a "for" cycle to check for changes in every heart.
-        for (int i = (testNumberOfHearts - 1); i > -1; i--)
+        for (int i = 0; i < numberOfHearts; i++)
         {
-            if (testLives <= ((heartLifeValue * (i + 1)) - heartLifeValue))
+            if (playerHealth.health <= (i))
             {
-                // If the player's life variable is smaller than the range of life in this heart (0-100, 100-200, etc)
-                // then we disable that heart/GameObject.
                 instantiatedHearts[i].SetActive(false);
             }
-            else if (testLives > ((heartLifeValue * (i + 1)) - heartLifeValue) &&
-                     testLives < (heartLifeValue * (i + 1)))
+            else
             {
-                // If the player's life variable is within the range of life in this heart (0-100, 100-200, etc)
-                // we grab the RectTransform of the parent GameObject to the heart sprite GameObject and we
-                // manipulate its width according to the amount of life that heart is supposed to hold.
-                // Because there's a Mask component in the heart parent GameObject and its pivot is to
-                // the left, manipulating the width will "cut" the heart from right to left.
                 instantiatedHearts[i].SetActive(true);
-                RectTransform thisHeartsTransform = instantiatedHearts[i].GetComponent<RectTransform>();
-                    Debug.Log($"{(testLives - (heartLifeValue * i)) / heartLifeValue}");
-                    thisHeartsTransform.sizeDelta = new Vector2(
-                        32 * ((testLives - (heartLifeValue * i)) / heartLifeValue),
-                        thisHeartsTransform.sizeDelta.y
-                        );
             }
-            else instantiatedHearts[i].SetActive(true);
         }
     }
     public void ReduceWeaponMag()
