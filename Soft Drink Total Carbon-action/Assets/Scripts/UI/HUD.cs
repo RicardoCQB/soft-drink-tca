@@ -103,7 +103,7 @@ public class HUD : MonoBehaviour
             // heart we want to instance.
             // This is why the offset value does not affect the first heart: "testHeartCount" is initially at zero.
             testOffsetVectorThree = new Vector3(
-                testFirstPivot.position.x + (testNewHeartPositionOffset * i),
+                testFirstPivot.position.x + (testNewHeartPositionOffset/2 * i),
                 testFirstPivot.position.y,
                 0
             );
