@@ -70675,6 +70675,25 @@ MonoBehaviour:
     volume: 0.362
     pitch: 0.73
     source: {fileID: 0}
+    loop: 0
+  - name: Ambient
+    clip: {fileID: 8300000, guid: d5ef34aa08f92134e8e5c44555aa7fcd, type: 3}
+    volume: 0.3
+    pitch: 0.22
+    source: {fileID: 0}
+    loop: 1
+  - name: SteamDoors
+    clip: {fileID: 8300000, guid: 01e295834b33d1d4d89073eebccfc93f, type: 3}
+    volume: 0.51
+    pitch: 0.98
+    source: {fileID: 0}
+    loop: 0
+  - name: EnemyDeath
+    clip: {fileID: 8300000, guid: 2f442ad54f4c1ff448db0419890fef4e, type: 3}
+    volume: 0.51
+    pitch: 0.98
+    source: {fileID: 0}
+    loop: 0
 --- !u!1 &2052307503
 GameObject:
   m_ObjectHideFlags: 0
@@ -70814,6 +70833,10 @@ PrefabInstance:
       propertyPath: playerRB
       value: 
       objectReference: {fileID: 1072024148}
+    - target: {fileID: 3740558611903349987, guid: 85bed8b9d958f0b4d88941cf8a679ff3, type: 3}
+      propertyPath: startTimeBetweenShots
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85bed8b9d958f0b4d88941cf8a679ff3, type: 3}
 --- !u!1001 &4669065982866802628

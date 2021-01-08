@@ -15,12 +15,13 @@ public class AudioManager : MonoBehaviour
             s.source.clip = s.clip;
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
+            s.source.loop = s.loop;
         }
     }
     // Start is called before the first frame update
     void Start()
     {
-
+        Play("Ambient");
     }
 
     // Update is called once per frame

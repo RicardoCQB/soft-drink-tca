@@ -17,6 +17,7 @@ public class EnemyAI : MonoBehaviour
     public Transform player;
     public  Rigidbody2D playerRB;
     public Animator enemyAnimator;
+    
 
     bool playerAlive;
 
@@ -40,6 +41,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Start()
     {
+        
         //player = GameObject.FindGameObjectWithTag("Player").transform;
         timeBetweenShots = startTimeBetweenShots;
 
@@ -54,6 +56,7 @@ public class EnemyAI : MonoBehaviour
         //HEALTH MANAGMENT
         if(health<=0)
         {
+            FindObjectOfType<AudioManager>().Play("EnemyDeath");
             Destroy(gameObject);
         }
 
