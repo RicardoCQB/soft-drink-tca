@@ -26,7 +26,7 @@ TagManager:
   - MiniMap
   - EnemyBullet
   - AheadOfTiles
-  - 
+  - BellowVoid
   - 
   - 
   - 
@@ -47,6 +47,9 @@ TagManager:
   - name: Void
     uniqueID: 1493884059
     locked: 0
+  - name: BellowVoid
+    uniqueID: 1181304331
+    locked: 0
   - name: Background
     uniqueID: 821154457
     locked: 0
@@ -55,6 +58,9 @@ TagManager:
     locked: 0
   - name: Obstacles
     uniqueID: 395773909
+    locked: 0
+  - name: NPC
+    uniqueID: 445990993
     locked: 0
   - name: Player
     uniqueID: 3301968141
