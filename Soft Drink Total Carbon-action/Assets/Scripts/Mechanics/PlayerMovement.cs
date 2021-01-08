@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     private string currentState;
     private bool isWalking;
-
+    AudioSource steps;
     // Player animation states
     const string FRONT_IDLE = "Front_Idle";
     const string BACK_IDLE = "Back_Idle";
@@ -41,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
     {
         playerAnimator = GetComponent<Animator>();
         playerAnimator.Play(FRONT_IDLE);
+        steps = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -57,6 +58,16 @@ public class PlayerMovement : MonoBehaviour
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
 
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+
+        if (isWalking)
+        {
+            if (!steps.isPlaying)
+            {
+                steps.Play();
+            }
+        }
+        else
+            steps.Stop();
 
 
 
