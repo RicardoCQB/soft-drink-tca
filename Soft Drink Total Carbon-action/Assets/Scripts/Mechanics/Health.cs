@@ -8,6 +8,16 @@ public class Health : MonoBehaviour
     public GameObject enemyBullet;
     HUD hud;
 
+    public float invulnerabilityTime = 3f;
+    private bool isVulnerable;
+    private float vulnerableCounter;
+
+    private void Start()
+    {
+        isVulnerable = true;
+        
+    }
+
     private void Awake()
     {
         hud = gameObject.GetComponent<HUD>();
@@ -18,15 +28,23 @@ public class Health : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if(!isVulnerable)
+            vulnerableCounter -= Time.deltaTime;
+        else
+            isVulnerable = true;
     }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag=="EnemyBullet")
+        if(collision.gameObject.tag=="EnemyBullet" && vulnerableCounter <=0)
         {
             health--;
             hud.UpdateLifeDisplay();
+            isVulnerable = false;
+            vulnerableCounter = invulnerabilityTime;
+
         }    
     }
 

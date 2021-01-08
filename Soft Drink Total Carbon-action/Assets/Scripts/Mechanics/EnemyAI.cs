@@ -105,10 +105,7 @@ public class EnemyAI : MonoBehaviour
             playerAlive = false;
         }
 
-    }
 
-    private void FixedUpdate()
-    {
         if (playerAlive)
         {
             Vector2 lookDir = playerRB.position;
@@ -129,6 +126,7 @@ public class EnemyAI : MonoBehaviour
             else if (angle > -115f && angle <= -65f)
                 ChangeAnimationState(FRONT_WALKING);
         }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
