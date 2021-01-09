@@ -1,0 +1,25 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+
+public class Portal : MonoBehaviour
+{
+    [SerializeField] GameObject boss;
+    [SerializeField] SpriteRenderer sprite;
+    public UnityEvent switchLevel;
+    private void Update()
+    {
+        if (boss == null)
+        {
+            sprite.enabled = true;
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (boss == null)
+        {
+            switchLevel.Invoke();
+        }
+    }
+}
