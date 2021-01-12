@@ -5,9 +5,11 @@ using UnityEngine.Events;
 
 public class Portal : MonoBehaviour
 {
+    [SerializeField] GameObject playerCharacter;
     [SerializeField] GameObject boss;
     [SerializeField] SpriteRenderer sprite;
     public UnityEvent switchLevel;
+    bool portalExecuted = false;
     private void Update()
     {
         if (boss == null)
@@ -17,7 +19,8 @@ public class Portal : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (boss == null)
+        if (boss == null &&
+            collision.gameObject == playerCharacter)
         {
             switchLevel.Invoke();
         }
