@@ -42,7 +42,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Start()
     {
-        
+        isWalking = false;
         //player = GameObject.FindGameObjectWithTag("Player").transform;
         timeBetweenShots = startTimeBetweenShots;
 
@@ -118,10 +118,10 @@ public class EnemyAI : MonoBehaviour
         }
 
 
-        if (isWalking)
+        if (isWalking && playerAlive)
         {
-            Vector2 lookDir = playerRB.position;
-
+            Vector2 lookDir = player.position - transform.position;
+            //Debug.Log("\npos: " + lookDir);
             float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
             //Debug.Log("\nAngle: " + angle);
 
@@ -140,6 +140,8 @@ public class EnemyAI : MonoBehaviour
         }
 
     }
+
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
