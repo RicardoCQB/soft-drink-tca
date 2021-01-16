@@ -41,13 +41,14 @@ public class PlayerMovement : MonoBehaviour
     {
         playerAnimator = GetComponent<Animator>();
         playerAnimator.Play(FRONT_IDLE);
-        steps = GetComponent<AudioSource>();
+        steps = GetComponent<AudioSource>();       
     }
 
     void Update()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+
 
         if (movement.x != 0 || movement.y != 0)
             isWalking = true;
@@ -68,10 +69,6 @@ public class PlayerMovement : MonoBehaviour
         }
         else
             steps.Stop();
-
-
-
-        
     }
 
     private void FixedUpdate()
