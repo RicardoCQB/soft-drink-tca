@@ -71670,6 +71670,12 @@ MonoBehaviour:
     pitch: 0.98
     source: {fileID: 0}
     loop: 0
+  - name: Theme
+    clip: {fileID: 8300000, guid: d0b7d32e13a61434ea8a348034e671f1, type: 3}
+    volume: 0.51
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
 --- !u!1001 &1905549941
 PrefabInstance:
   m_ObjectHideFlags: 0
