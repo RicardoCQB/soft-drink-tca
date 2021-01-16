@@ -153,6 +153,7 @@ MonoBehaviour:
   speed: 0.5
   stoppingDistance: 1
   retreatDistance: 0.5
+  activationDistance: 5
   health: 3
   startTimeBetweenShots: 0.5
   firePoint: {fileID: 3740558611658186985}
