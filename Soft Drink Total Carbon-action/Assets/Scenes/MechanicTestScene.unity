@@ -75457,6 +75457,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Steven Up
       objectReference: {fileID: 0}
+    - target: {fileID: 7349632791368455357, guid: dfd08fe83ff1ecb4dba9a08f4ad43e2d, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 914603668}
+    - target: {fileID: 7349632791368455357, guid: dfd08fe83ff1ecb4dba9a08f4ad43e2d, type: 3}
+      propertyPath: invulnerabilityTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7349632791368455357, guid: dfd08fe83ff1ecb4dba9a08f4ad43e2d, type: 3}
+      propertyPath: spriteBlinkingTotalDuration
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7349632791368455358, guid: dfd08fe83ff1ecb4dba9a08f4ad43e2d, type: 3}
       propertyPath: coinsText
       value: 
