@@ -27,7 +27,7 @@ TagManager:
   - EnemyBullet
   - AheadOfTiles
   - BellowVoid
-  - 
+  - Particles
   - 
   - 
   - 
@@ -74,7 +74,7 @@ TagManager:
   - name: Foreground
     uniqueID: 2016848971
     locked: 0
-  - name: 
+  - name: Particles
     uniqueID: 3543676027
     locked: 0
   - name: Minimap
