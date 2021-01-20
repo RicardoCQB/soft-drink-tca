@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/BossTest.unity
+- path: Assets/Scenes/MechanicTestScene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
