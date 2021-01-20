@@ -161,6 +161,7 @@ MonoBehaviour:
   player: {fileID: 0}
   playerRB: {fileID: 0}
   enemyAnimator: {fileID: 3740558611903349988}
+  deathParticles: {fileID: 7567768617370569790, guid: 1be7897fed622d041924a3f2808be626, type: 3}
 --- !u!61 &3740558611903349984
 BoxCollider2D:
   m_ObjectHideFlags: 0

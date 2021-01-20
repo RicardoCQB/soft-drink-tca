@@ -18,6 +18,7 @@ public class EnemyAI : MonoBehaviour
     public Transform player;
     public  Rigidbody2D playerRB;
     public Animator enemyAnimator;
+    public GameObject deathParticles;
     
 
     bool playerAlive;
@@ -58,6 +59,7 @@ public class EnemyAI : MonoBehaviour
         if(health<=0)
         {
             FindObjectOfType<AudioManager>().Play("EnemyDeath");
+            Instantiate(deathParticles, gameObject.transform.position, gameObject.transform.rotation);
             Destroy(gameObject);
         }
 
