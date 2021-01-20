@@ -16,11 +16,19 @@ public class BossAI : MonoBehaviour
     public float startTimeBetweenBubbles;
 
     private Transform fizz;
-    public Transform firePoint;
+    
     public GameObject projectile;
     public Transform player;
     public Rigidbody2D playerRB;
     public GameObject bubbleParticles;
+    public GameObject particleRotator;
+    public GameObject lastCola;
+
+    public Transform firePoint;
+    public Transform firePoint_L;
+    public Transform firePoint_R;
+    public Transform firePoint_D;
+    public Transform firePoint_U;
     //public Animator enemyAnimator;
 
 
@@ -54,8 +62,6 @@ public class BossAI : MonoBehaviour
         //enemyAnimator = GetComponent<Animator>();
         //enemyAnimator.Play(FRONT_WALKING);
 
-        fizz = firePoint;
-        
         playerAlive = true;
     }
 
@@ -65,6 +71,7 @@ public class BossAI : MonoBehaviour
         if (health <= 0)
         {
             FindObjectOfType<AudioManager>().Play("EnemyDeath");
+            lastCola.SetActive(true);
             Destroy(gameObject);
         }
 
@@ -109,6 +116,7 @@ public class BossAI : MonoBehaviour
                 if (timeBetweenShots <= 0)
                 {
                     Instantiate(projectile, firePoint.position, firePoint.rotation);
+                    FindObjectOfType<AudioManager>().Play("BUBBLE");
                     timeBetweenShots = startTimeBetweenShots;
                 }
                 else
@@ -116,19 +124,45 @@ public class BossAI : MonoBehaviour
                     timeBetweenShots -= Time.deltaTime;
                 }
 
-                if(timeBetweenBubbles<=0)
+                Vector2 lookDir =playerRB.position - gameObject.GetComponent<Rigidbody2D>().position;
+             
+                float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+
+                particleRotator.transform.rotation = Quaternion.LookRotation(player.position) * Quaternion.FromToRotation(Vector3.right, Vector3.forward); ;
+                
+                if (timeBetweenBubbles<=0)
                 {
-                    fizz.rotation = new Quaternion(5, 0, 0, 0);
-                    Instantiate(bubbleParticles, firePoint.position, fizz.rotation);
-                    timeBetweenBubbles = startTimeBetweenBubbles;
+                    if (angle > 0f && angle <= 90f)
+                    {
+                        Instantiate(bubbleParticles, firePoint_R.position, gameObject.transform.rotation);
+                        FindObjectOfType<AudioManager>().Play("FizzJet");
+                        timeBetweenBubbles = startTimeBetweenBubbles;
+                    }
+                    else if (angle > 90f && angle <= 180f)
+                    {
+                        Instantiate(bubbleParticles, firePoint_L.position, gameObject.transform.rotation);
+                        FindObjectOfType<AudioManager>().Play("FizzJet");
+                        timeBetweenBubbles = startTimeBetweenBubbles;
+                    }
+                    else if (angle > -180f && angle <= -90f)
+                    {
+                        Instantiate(bubbleParticles, firePoint_D.position, gameObject.transform.rotation);
+                        FindObjectOfType<AudioManager>().Play("FizzJet");
+                        timeBetweenBubbles = startTimeBetweenBubbles;
+                    }
+                    else if (angle > -90f && angle <= 0)
+                    {
+                        Instantiate(bubbleParticles, firePoint_L.position, gameObject.transform.rotation);
+                        FindObjectOfType<AudioManager>().Play("FizzJet");
+                        timeBetweenBubbles = startTimeBetweenBubbles;
+                    }
+                   
+                    
                 }
                 else
                 {
                     timeBetweenBubbles -= Time.deltaTime;
                 }
-
-
-                
 
             }
             else

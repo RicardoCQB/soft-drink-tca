@@ -57,7 +57,17 @@ public class Health : MonoBehaviour
             vulnerableCounter = invulnerabilityTime;
 
         }
+
+        if (collision.gameObject.tag == "FizzJet" && vulnerableCounter <= 0)
+        {
+            health--;
+            hud.UpdateLifeDisplay();
+            isVulnerable = false;
+            startBlinking = true;
+            vulnerableCounter = invulnerabilityTime;
+        }
     }
+
 
     public void IncreaseHealth(int healthIncrement)
     {
