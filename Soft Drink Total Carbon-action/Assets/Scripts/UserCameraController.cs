@@ -19,8 +19,8 @@ public class UserCameraController : MonoBehaviour
         if (Player != null)
         {
             mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-            //cameraPos = new Vector3((Player.position.x + mousePos.x)/2, (Player.position.y + mousePos.y)/2, -10f);
-            cameraPos = new Vector3(Player.position.x, Player.position.y, -5f);
+            cameraPos = new Vector3((Player.position.x + mousePos.x)/2, (Player.position.y + mousePos.y)/2, -10f);
+            // cameraPos = new Vector3(Player.position.x, Player.position.y, -5f);
         }
         transform.position = Vector3.SmoothDamp(gameObject.transform.position, cameraPos, ref velocity, dampTime);
     }

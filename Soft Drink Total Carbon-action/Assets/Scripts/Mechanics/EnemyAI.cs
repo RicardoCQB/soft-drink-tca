@@ -80,14 +80,11 @@ public class EnemyAI : MonoBehaviour
             
             if(isWalking)
             {
-
-            
                 //ENEMY MOVEMENT
                 if (Vector2.Distance(transform.position, player.position) > stoppingDistance)
                 {
                     transform.position = Vector2.MoveTowards(transform.position, player.position,
                                                                        speed * Time.deltaTime);
-
                 }
                 else if (Vector2.Distance(transform.position, player.position) < stoppingDistance
                             && Vector2.Distance(transform.position, player.position) > retreatDistance)
@@ -119,14 +116,13 @@ public class EnemyAI : MonoBehaviour
             }
         }
 
+        Vector2 lookDir = player.position - transform.position;
+        //Debug.Log("\npos: " + lookDir);
+        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+        //Debug.Log("\nAngle: " + angle);
 
         if (isWalking && playerAlive)
         {
-            Vector2 lookDir = player.position - transform.position;
-            //Debug.Log("\npos: " + lookDir);
-            float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-            //Debug.Log("\nAngle: " + angle);
-
             if (angle > -65f && angle <= 0f)
                 ChangeAnimationState(RIGHT_FRONT_WALKING);
             else if (angle > 0f && angle <= 65f)
@@ -139,6 +135,21 @@ public class EnemyAI : MonoBehaviour
                 ChangeAnimationState(LEFT_FRONT_WALKING);
             else if (angle > -115f && angle <= -65f)
                 ChangeAnimationState(FRONT_WALKING);
+        }
+        if (!isWalking)
+        {
+            if (angle > -65f && angle <= 0f)
+                ChangeAnimationState(FRONT_RIGHT_IDLE);
+            else if (angle > 0f && angle <= 65f)
+                ChangeAnimationState(BACK_RIGHT_IDLE);
+            else if (angle > 65f && angle <= 115f)
+                ChangeAnimationState(BACK_IDLE);
+            else if (angle > 115f && angle <= 180f)
+                ChangeAnimationState(BACK_LEFT_IDLE);
+            else if (angle > -180f && angle <= -115f)
+                ChangeAnimationState(FRONT_LEFT_IDLE);
+            else if (angle > -115f && angle <= -65f)
+                ChangeAnimationState(FRONT_IDLE);
         }
 
     }
