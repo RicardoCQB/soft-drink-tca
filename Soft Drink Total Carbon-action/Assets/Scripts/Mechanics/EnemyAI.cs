@@ -56,7 +56,7 @@ public class EnemyAI : MonoBehaviour
     private void Update()
     {
         //HEALTH MANAGMENT
-        if(health<=0)
+        if (health <= 0)
         {
             FindObjectOfType<AudioManager>().Play("EnemyDeath");
             Instantiate(deathParticles, gameObject.transform.position, gameObject.transform.rotation);
@@ -64,12 +64,12 @@ public class EnemyAI : MonoBehaviour
         }
 
 
-        playerAlive=GameObject.FindGameObjectWithTag("Player");
-        
+        playerAlive = GameObject.FindGameObjectWithTag("Player");
 
-        if(playerAlive)
+
+        if (playerAlive)
         {
-            if(Vector2.Distance(transform.position, player.position)<activationDistance)
+            if (Vector2.Distance(transform.position, player.position) < activationDistance)
             {
                 isWalking = true;
             }
@@ -77,8 +77,8 @@ public class EnemyAI : MonoBehaviour
             {
                 isWalking = false;
             }
-            
-            if(isWalking)
+
+            if (isWalking)
             {
                 //ENEMY MOVEMENT
                 if (Vector2.Distance(transform.position, player.position) > stoppingDistance)
@@ -95,7 +95,7 @@ public class EnemyAI : MonoBehaviour
                 {
                     transform.position = Vector2.MoveTowards(transform.position, player.position,
                                                                        -speed * Time.deltaTime);
-                }            
+                }
 
                 //ENEMY SHOOTING
                 if (timeBetweenShots <= 0)
@@ -114,44 +114,48 @@ public class EnemyAI : MonoBehaviour
                 isWalking = false;
                 playerAlive = false;
             }
-        }
+        
 
-        Vector2 lookDir = player.position - transform.position;
-        //Debug.Log("\npos: " + lookDir);
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-        //Debug.Log("\nAngle: " + angle);
 
-        if (isWalking && playerAlive)
-        {
-            if (angle > -65f && angle <= 0f)
-                ChangeAnimationState(RIGHT_FRONT_WALKING);
-            else if (angle > 0f && angle <= 65f)
-                ChangeAnimationState(RIGHT_BACK_WALKING);
-            else if (angle > 65f && angle <= 115f)
-                ChangeAnimationState(BACK_WALKING);
-            else if (angle > 115f && angle <= 180f)
-                ChangeAnimationState(LEFT_BACK_WALKING);
-            else if (angle > -180f && angle <= -115f)
-                ChangeAnimationState(LEFT_FRONT_WALKING);
-            else if (angle > -115f && angle <= -65f)
-                ChangeAnimationState(FRONT_WALKING);
-        }
-        if (!isWalking)
-        {
-            if (angle > -65f && angle <= 0f)
-                ChangeAnimationState(FRONT_RIGHT_IDLE);
-            else if (angle > 0f && angle <= 65f)
-                ChangeAnimationState(BACK_RIGHT_IDLE);
-            else if (angle > 65f && angle <= 115f)
-                ChangeAnimationState(BACK_IDLE);
-            else if (angle > 115f && angle <= 180f)
-                ChangeAnimationState(BACK_LEFT_IDLE);
-            else if (angle > -180f && angle <= -115f)
-                ChangeAnimationState(FRONT_LEFT_IDLE);
-            else if (angle > -115f && angle <= -65f)
-                ChangeAnimationState(FRONT_IDLE);
-        }
+            Vector2 lookDir = player.position - transform.position;
+            //Debug.Log("\npos: " + lookDir);
+            float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+            //Debug.Log("\nAngle: " + angle);
 
+            if (isWalking)
+            {
+
+
+                if (angle > -65f && angle <= 0f)
+                    ChangeAnimationState(RIGHT_FRONT_WALKING);
+                else if (angle > 0f && angle <= 65f)
+                    ChangeAnimationState(RIGHT_BACK_WALKING);
+                else if (angle > 65f && angle <= 115f)
+                    ChangeAnimationState(BACK_WALKING);
+                else if (angle > 115f && angle <= 180f)
+                    ChangeAnimationState(LEFT_BACK_WALKING);
+                else if (angle > -180f && angle <= -115f)
+                    ChangeAnimationState(LEFT_FRONT_WALKING);
+                else if (angle > -115f && angle <= -65f)
+                    ChangeAnimationState(FRONT_WALKING);
+            }
+            if (!isWalking)
+            {
+
+                if (angle > -65f && angle <= 0f)
+                    ChangeAnimationState(FRONT_RIGHT_IDLE);
+                else if (angle > 0f && angle <= 65f)
+                    ChangeAnimationState(BACK_RIGHT_IDLE);
+                else if (angle > 65f && angle <= 115f)
+                    ChangeAnimationState(BACK_IDLE);
+                else if (angle > 115f && angle <= 180f)
+                    ChangeAnimationState(BACK_LEFT_IDLE);
+                else if (angle > -180f && angle <= -115f)
+                    ChangeAnimationState(FRONT_LEFT_IDLE);
+                else if (angle > -115f && angle <= -65f)
+                    ChangeAnimationState(FRONT_IDLE);
+            }
+        }
     }
 
 

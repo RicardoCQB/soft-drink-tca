@@ -102526,11 +102526,11 @@ PrefabInstance:
     - target: {fileID: 6456371155712030467, guid: 89e6f71175121d24ba6604e1f008b3ef, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 631090990}
     - target: {fileID: 6456371155712030467, guid: 89e6f71175121d24ba6604e1f008b3ef, type: 3}
       propertyPath: playerRB
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 631090989}
     - target: {fileID: 6456371155712030467, guid: 89e6f71175121d24ba6604e1f008b3ef, type: 3}
       propertyPath: startTimeBetweenShots
       value: 1.5
