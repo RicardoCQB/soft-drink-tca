@@ -8,6 +8,7 @@ public class DialogManager : MonoBehaviour
     private Queue<string> sentences;
     public TextMeshProUGUI speakerName;
     public TextMeshProUGUI dialogText;
+    public GameObject canvas;
 
     private void Start()
     {
@@ -16,6 +17,7 @@ public class DialogManager : MonoBehaviour
 
     public void StartDialog(Dialog dialogue)
     {
+        canvas.SetActive(true);
         speakerName.text = dialogue.speakerName;
         Debug.Log("Starting conversation with: " + dialogue.speakerName);
 
@@ -45,6 +47,7 @@ public class DialogManager : MonoBehaviour
 
     public void EndDialogue()
     {
+        canvas.SetActive(false);
         Debug.Log("End of conversation!");
     }
 }

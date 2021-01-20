@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public Animator playerAnimator;
 
     public UnityEvent openStore;
+    public UnityEvent openDialogBox;
 
     private string currentState;
     private bool isWalking;
@@ -130,6 +131,12 @@ public class PlayerMovement : MonoBehaviour
         if (collision.tag == "Shopkeeper" && Input.GetMouseButtonDown(0))
         {
             openStore.Invoke();
+        }
+
+        // In "GetMouseButtonDown", an int value of 0 is the left button and 1 is the right button.
+        if (collision.tag == "Spy" && Input.GetMouseButtonDown(0))
+        {
+            openDialogBox.Invoke();
         }
     }
 }
