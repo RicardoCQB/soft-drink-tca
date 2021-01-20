@@ -58,7 +58,6 @@ public class CutsceneManager : MonoBehaviour
 
             else
             {
-                UnityEngine.Debug.Log("Timer1 has finished!");
                 timer1Remaining = timer1;
                 fadefinished = true;
                 //image1.sprite = SpriteArray[currentImage];
@@ -69,12 +68,13 @@ public class CutsceneManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-
-            UnityEngine.Debug.Log("Pressed primary button.");
             currentImage++;
 
             if (currentImage >= SpriteArray.Length)
-                SceneManager.LoadScene("MechanicTestScene");
+            {
+                SceneManager.LoadScene("MechanicTestScene", LoadSceneMode.Single);
+                currentImage = 0;
+            }
 
 
             fade();
@@ -82,30 +82,32 @@ public class CutsceneManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            UnityEngine.Debug.Log("Pressed space bar.");
             currentImage++;
 
             if (currentImage >= SpriteArray.Length)
-                SceneManager.LoadScene("MechanicTestScene");
+            {
+                SceneManager.LoadScene("MechanicTestScene", LoadSceneMode.Single);
+                currentImage = 0;                
+            }
 
             fade();
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            UnityEngine.Debug.Log("Pressed RightArrow.");
             currentImage++;
 
             if (currentImage >= SpriteArray.Length)
-                SceneManager.LoadScene("MechanicTestScene");
+            {
+                SceneManager.LoadScene("MechanicTestScene", LoadSceneMode.Single);
+                currentImage = 0;
+            }
 
             fade();
         }
 
         if (Input.GetMouseButtonDown(1))
         {
-            UnityEngine.Debug.Log("Pressed secondary button.");
-
             currentImage--;
             if (currentImage < 0)
                 currentImage = 0;
@@ -114,8 +116,6 @@ public class CutsceneManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
-            UnityEngine.Debug.Log("Pressed Backspace.");
-
             currentImage--;
             if (currentImage < 0)
                 currentImage = 0;
@@ -126,7 +126,6 @@ public class CutsceneManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            UnityEngine.Debug.Log("Pressed LeftArrow.");
             currentImage--;
 
             if (currentImage < 0)
