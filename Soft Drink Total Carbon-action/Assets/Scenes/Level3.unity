@@ -638,80 +638,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 10/100
---- !u!1 &198567573
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 198567575}
-  - component: {fileID: 198567574}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &198567574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 198567573}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 420f8573b93fc984cbae6721fdfce370, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - name: BulletPop
-    clip: {fileID: 8300000, guid: 1958105c65df73a4787bb84df7fca040, type: 3}
-    volume: 0.362
-    pitch: 0.73
-    source: {fileID: 0}
-    loop: 0
-  - name: Ambient
-    clip: {fileID: 8300000, guid: d5ef34aa08f92134e8e5c44555aa7fcd, type: 3}
-    volume: 0.3
-    pitch: 0.22
-    source: {fileID: 0}
-    loop: 1
-  - name: SteamDoors
-    clip: {fileID: 8300000, guid: 01e295834b33d1d4d89073eebccfc93f, type: 3}
-    volume: 0.51
-    pitch: 0.98
-    source: {fileID: 0}
-    loop: 0
-  - name: EnemyDeath
-    clip: {fileID: 8300000, guid: 2f442ad54f4c1ff448db0419890fef4e, type: 3}
-    volume: 0.51
-    pitch: 0.98
-    source: {fileID: 0}
-    loop: 0
-  - name: Theme
-    clip: {fileID: 8300000, guid: 9c990fce7739be24498d0caa4f577233, type: 3}
-    volume: 0.51
-    pitch: 1
-    source: {fileID: 0}
-    loop: 1
---- !u!4 &198567575
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 198567573}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.086857885, y: -0.381952, z: -1.3694137}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &238666678
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -834,6 +760,92 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3740558611903349986, guid: 85bed8b9d958f0b4d88941cf8a679ff3, type: 3}
   m_PrefabInstance: {fileID: 238666678}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &259034815
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 259034817}
+  - component: {fileID: 259034816}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &259034816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259034815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 420f8573b93fc984cbae6721fdfce370, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: BulletPop
+    clip: {fileID: 8300000, guid: 1958105c65df73a4787bb84df7fca040, type: 3}
+    volume: 0.362
+    pitch: 0.73
+    source: {fileID: 0}
+    loop: 0
+  - name: Ambient
+    clip: {fileID: 8300000, guid: d5ef34aa08f92134e8e5c44555aa7fcd, type: 3}
+    volume: 0.3
+    pitch: 0.22
+    source: {fileID: 0}
+    loop: 1
+  - name: SteamDoors
+    clip: {fileID: 8300000, guid: 01e295834b33d1d4d89073eebccfc93f, type: 3}
+    volume: 0.51
+    pitch: 0.98
+    source: {fileID: 0}
+    loop: 0
+  - name: EnemyDeath
+    clip: {fileID: 8300000, guid: 2f442ad54f4c1ff448db0419890fef4e, type: 3}
+    volume: 0.51
+    pitch: 0.98
+    source: {fileID: 0}
+    loop: 0
+  - name: Theme
+    clip: {fileID: 8300000, guid: 9c990fce7739be24498d0caa4f577233, type: 3}
+    volume: 0.51
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: BUBBLE
+    clip: {fileID: 8300000, guid: 1937078405a1d2348b0b82a4cc68e211, type: 3}
+    volume: 0.51
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: FizzJet
+    clip: {fileID: 8300000, guid: 3d63c49f3a8a4dd47822d7afdc224aac, type: 3}
+    volume: 0.4
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+--- !u!4 &259034817
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259034815}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.086857885, y: -0.381952, z: -1.3694137}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &343002240
 GameObject:
   m_ObjectHideFlags: 0
@@ -950,8 +962,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3585290197562360604, guid: 73a9500282f210247b3097eec70957f5, type: 3}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585290197562360604, guid: 73a9500282f210247b3097eec70957f5, type: 3}
       propertyPath: health
-      value: 20
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3585290197562360604, guid: 73a9500282f210247b3097eec70957f5, type: 3}
       propertyPath: player
@@ -965,6 +981,18 @@ PrefabInstance:
       propertyPath: playerRB
       value: 
       objectReference: {fileID: 631090989}
+    - target: {fileID: 3585290197562360604, guid: 73a9500282f210247b3097eec70957f5, type: 3}
+      propertyPath: retreatDistance
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585290197562360604, guid: 73a9500282f210247b3097eec70957f5, type: 3}
+      propertyPath: stoppingDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585290197562360604, guid: 73a9500282f210247b3097eec70957f5, type: 3}
+      propertyPath: startTimeBetweenBubbles
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3585290197562360609, guid: 73a9500282f210247b3097eec70957f5, type: 3}
       propertyPath: m_Name
       value: Boss
@@ -1696,11 +1724,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7349632791368455348, guid: dfd08fe83ff1ecb4dba9a08f4ad43e2d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.93
+      value: -15.58
       objectReference: {fileID: 0}
     - target: {fileID: 7349632791368455348, guid: dfd08fe83ff1ecb4dba9a08f4ad43e2d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.96
+      value: 33.35
       objectReference: {fileID: 0}
     - target: {fileID: 7349632791368455348, guid: dfd08fe83ff1ecb4dba9a08f4ad43e2d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1933,7 +1961,7 @@ Transform:
   - {fileID: 1293415519}
   - {fileID: 1489433249}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &668137857
 GameObject:
@@ -102477,7 +102505,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6456371155712030466, guid: 89e6f71175121d24ba6604e1f008b3ef, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6456371155712030466, guid: 89e6f71175121d24ba6604e1f008b3ef, type: 3}
       propertyPath: m_LocalPosition.x
@@ -103160,7 +103188,7 @@ RectTransform:
   - {fileID: 768040588}
   - {fileID: 1301157839}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

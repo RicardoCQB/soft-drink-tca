@@ -124,12 +124,12 @@ public class BossAI : MonoBehaviour
                     timeBetweenShots -= Time.deltaTime;
                 }
 
-                Vector2 lookDir =playerRB.position - gameObject.GetComponent<Rigidbody2D>().position;
-             
+                Vector2 lookDir = playerRB.position - gameObject.GetComponent<Rigidbody2D>().position;
+
                 float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
 
-                particleRotator.transform.rotation = Quaternion.LookRotation(player.position) * Quaternion.FromToRotation(Vector3.right, Vector3.forward); ;
-                
+                //particleRotator.transform.rotation = Quaternion.LookRotation(player.position) * Quaternion.FromToRotation(Vector3.right, Vector3.forward); 
+
                 if (timeBetweenBubbles<=0)
                 {
                     if (angle > 0f && angle <= 90f)
