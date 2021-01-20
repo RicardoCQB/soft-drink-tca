@@ -306,7 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36e4fd7e8105a64b97c3ace13dedde6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 4.5
   rb: {fileID: 7349632791368455347}
   cam: {fileID: 0}
   playerSprite: {fileID: 7349632791368455349}
