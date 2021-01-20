@@ -22,6 +22,7 @@ public class EnemyAI : MonoBehaviour
     
 
     bool playerAlive;
+    bool isEnemyAlive;
 
     private string currentState;
     private bool isWalking;
@@ -41,8 +42,11 @@ public class EnemyAI : MonoBehaviour
     const string LEFT_BACK_WALKING = "LeftBack_Walking";
     const string RIGHT_BACK_WALKING = "RightBack_Walking";
 
+    const string DEATH = "Death";
+
     private void Start()
     {
+        isEnemyAlive = true;
         isWalking = false;
         //player = GameObject.FindGameObjectWithTag("Player").transform;
         timeBetweenShots = startTimeBetweenShots;
@@ -56,18 +60,19 @@ public class EnemyAI : MonoBehaviour
     private void Update()
     {
         //HEALTH MANAGMENT
-        if (health <= 0)
+        if (health <= 0 && isEnemyAlive)
         {
+            isEnemyAlive = false;
+            ChangeAnimationState(DEATH);
             FindObjectOfType<AudioManager>().Play("EnemyDeath");
-            Instantiate(deathParticles, gameObject.transform.position, gameObject.transform.rotation);
-            Destroy(gameObject);
+            Invoke("DestroyObject", 0.6f);
         }
 
 
         playerAlive = GameObject.FindGameObjectWithTag("Player");
 
 
-        if (playerAlive)
+        if (playerAlive && isEnemyAlive)
         {
             if (Vector2.Distance(transform.position, player.position) < activationDistance)
             {
@@ -179,5 +184,11 @@ public class EnemyAI : MonoBehaviour
 
         // Updates the current state animation.
         currentState = newState;
+    }
+
+    void DestroyObject()
+    {
+        Instantiate(deathParticles, gameObject.transform.position, gameObject.transform.rotation);
+        Destroy(gameObject);
     }
 }

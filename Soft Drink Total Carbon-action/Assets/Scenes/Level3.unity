@@ -1724,11 +1724,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7349632791368455348, guid: dfd08fe83ff1ecb4dba9a08f4ad43e2d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.58
+      value: -15.5
       objectReference: {fileID: 0}
     - target: {fileID: 7349632791368455348, guid: dfd08fe83ff1ecb4dba9a08f4ad43e2d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 33.35
+      value: 25.29
       objectReference: {fileID: 0}
     - target: {fileID: 7349632791368455348, guid: dfd08fe83ff1ecb4dba9a08f4ad43e2d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4504,7 +4504,7 @@ PrefabInstance:
     - target: {fileID: 4840047196612870097, guid: 33281b7b0cb5f3c4f9669bcc67d27e5f, type: 3}
       propertyPath: boss
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2141583167}
     - target: {fileID: 4840047196612870097, guid: 33281b7b0cb5f3c4f9669bcc67d27e5f, type: 3}
       propertyPath: spriteRend
       value: 
@@ -103274,3 +103274,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2113046452}
   m_CullTransparentMesh: 0
+--- !u!1 &2141583167 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3585290197562360609, guid: 73a9500282f210247b3097eec70957f5, type: 3}
+  m_PrefabInstance: {fileID: 353433962}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2141583173
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141583167}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
