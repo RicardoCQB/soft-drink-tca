@@ -156,7 +156,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -0.00012207031, y: 0}
+  m_AnchoredPosition: {x: -0.00024414062, y: 0}
   m_SizeDelta: {x: 2000, y: 250}
   m_Pivot: {x: 1, y: 0}
 --- !u!1 &229001089
@@ -1971,7 +1971,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: MechanicTestScene
+          m_StringArgument: StoryCutscene
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1929927849
