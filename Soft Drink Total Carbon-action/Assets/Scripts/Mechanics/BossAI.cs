@@ -22,6 +22,7 @@ public class BossAI : MonoBehaviour
     public Rigidbody2D playerRB;
     public GameObject bubbleParticles;
     public GameObject particleRotator;
+    public GameObject lastCola;
 
     public Transform firePoint;
     public Transform firePoint_L;
@@ -70,6 +71,7 @@ public class BossAI : MonoBehaviour
         if (health <= 0)
         {
             FindObjectOfType<AudioManager>().Play("EnemyDeath");
+            lastCola.SetActive(true);
             Destroy(gameObject);
         }
 
@@ -114,6 +116,7 @@ public class BossAI : MonoBehaviour
                 if (timeBetweenShots <= 0)
                 {
                     Instantiate(projectile, firePoint.position, firePoint.rotation);
+                    FindObjectOfType<AudioManager>().Play("BUBBLE");
                     timeBetweenShots = startTimeBetweenShots;
                 }
                 else
@@ -132,25 +135,25 @@ public class BossAI : MonoBehaviour
                     if (angle > 0f && angle <= 90f)
                     {
                         Instantiate(bubbleParticles, firePoint_R.position, gameObject.transform.rotation);
-                        
+                        FindObjectOfType<AudioManager>().Play("FizzJet");
                         timeBetweenBubbles = startTimeBetweenBubbles;
                     }
                     else if (angle > 90f && angle <= 180f)
                     {
                         Instantiate(bubbleParticles, firePoint_L.position, gameObject.transform.rotation);
-                       
+                        FindObjectOfType<AudioManager>().Play("FizzJet");
                         timeBetweenBubbles = startTimeBetweenBubbles;
                     }
                     else if (angle > -180f && angle <= -90f)
                     {
                         Instantiate(bubbleParticles, firePoint_D.position, gameObject.transform.rotation);
-                      
+                        FindObjectOfType<AudioManager>().Play("FizzJet");
                         timeBetweenBubbles = startTimeBetweenBubbles;
                     }
                     else if (angle > -90f && angle <= 0)
                     {
                         Instantiate(bubbleParticles, firePoint_L.position, gameObject.transform.rotation);
-                        
+                        FindObjectOfType<AudioManager>().Play("FizzJet");
                         timeBetweenBubbles = startTimeBetweenBubbles;
                     }
                    

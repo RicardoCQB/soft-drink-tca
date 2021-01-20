@@ -66,6 +66,9 @@ TagManager:
   - name: Player
     uniqueID: 3301968141
     locked: 0
+  - name: Particles
+    uniqueID: 3543676027
+    locked: 0
   - name: Enemies
     uniqueID: 763831779
     locked: 0
@@ -74,9 +77,6 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 2016848971
-    locked: 0
-  - name: Particles
-    uniqueID: 3543676027
     locked: 0
   - name: Minimap
     uniqueID: 1195636067
