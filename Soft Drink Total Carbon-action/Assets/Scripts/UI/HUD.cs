@@ -9,6 +9,7 @@ public class HUD : MonoBehaviour
 
 
     [Header("Shoot/Reload")]
+    [SerializeField] Shooting shooting;
     // Test variables:
     [SerializeField] int testCurrentBullets;
     [SerializeField] int testReloadBullets;
@@ -17,7 +18,6 @@ public class HUD : MonoBehaviour
     [SerializeField] Text bulletsText;
     int weaponMagazineSize;
     bool isGunReloading = false;
-    private Shooting shooting;
 
     [Header("Coins")]
     // Test variables:
@@ -26,6 +26,7 @@ public class HUD : MonoBehaviour
     [SerializeField] Text coinsText;
 
     [Header("Lives")]
+    [SerializeField] Health playerHealth;
     // Test variables:
     [SerializeField] Transform testParentObject;
     [SerializeField] Transform testInitialPivot;
@@ -35,11 +36,9 @@ public class HUD : MonoBehaviour
     [SerializeField] GameObject heartPrefab;
     List<GameObject> instantiatedHearts;
     int numberOfHearts;
-    private Health playerHealth;
 
     private void Awake()
     {
-        playerHealth = gameObject.GetComponent<Health>();
         numberOfHearts = playerHealth.health;
         InstantiateHearts();
     }
@@ -47,9 +46,6 @@ public class HUD : MonoBehaviour
     private void Start()
     {
         ChangeHeartsToNewParent(testInitialPivot);
-
-
-        shooting = gameObject.GetComponent<Shooting>();
 
         weaponMagazineSize = testCurrentBullets;
         testReloadText.text = "";

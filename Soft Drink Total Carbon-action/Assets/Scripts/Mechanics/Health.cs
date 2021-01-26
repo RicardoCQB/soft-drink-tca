@@ -7,7 +7,7 @@ public class Health : MonoBehaviour
     public int health = 10;
     public GameObject enemyBullet;
     public GameObject player;
-    HUD hud;
+    public HUD hud;
 
     public float invulnerabilityTime = 2f;
     private bool isVulnerable;
@@ -23,11 +23,6 @@ public class Health : MonoBehaviour
     {
         isVulnerable = true;
 
-    }
-
-    private void Awake()
-    {
-        hud = gameObject.GetComponent<HUD>();
     }
     private void Update()
     {

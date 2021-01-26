@@ -6,7 +6,7 @@ public class Shooting : MonoBehaviour
 {
     public Transform firePoint;
     public GameObject bulletPrefab;
-    private HUD hud;
+    public HUD hud;
 
     public float bulletForce = 10f;
     public bool bulletsAvailable;
@@ -14,7 +14,6 @@ public class Shooting : MonoBehaviour
 
     private void Start()
     {
-        hud = gameObject.GetComponent<HUD>();
         bulletsAvailable = true;
     }
 

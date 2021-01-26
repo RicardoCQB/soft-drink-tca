@@ -192,10 +192,8 @@ GameObject:
   - component: {fileID: 7349632791368455345}
   - component: {fileID: 7349632791368455344}
   - component: {fileID: 7349632791368455359}
-  - component: {fileID: 7349632791368455358}
   - component: {fileID: 7349632791368455357}
   - component: {fileID: 7822662368819796564}
-  - component: {fileID: 776420428793440740}
   m_Layer: 13
   m_Name: Steven Up
   m_TagString: Player
@@ -314,7 +312,7 @@ MonoBehaviour:
   openStore:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7349632791368455358}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: HUD, Assembly-CSharp
         m_MethodName: ChangeHeartParentObject
         m_Mode: 2
@@ -326,7 +324,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7349632791368455358}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: HUD, Assembly-CSharp
         m_MethodName: ChangeHeartsToNewParent
         m_Mode: 2
@@ -338,7 +336,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7349632791368455358}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: HUD, Assembly-CSharp
         m_MethodName: UpdateCoinDisplay
         m_Mode: 2
@@ -362,7 +360,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 776420428793440740}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UserInterface, Assembly-CSharp
         m_MethodName: EnableGameObject
         m_Mode: 2
@@ -374,7 +372,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 776420428793440740}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UserInterface, Assembly-CSharp
         m_MethodName: DisableGameObject
         m_Mode: 2
@@ -386,6 +384,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  openDialogBox:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7349632791368455345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,6 +401,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 7349632791355856192}
   bulletPrefab: {fileID: 8809926783632044467, guid: 03bb0b9c7b3a3174aa323cff30e1da93, type: 3}
+  hud: {fileID: 0}
   bulletForce: 10
   bulletsAvailable: 0
 --- !u!95 &7349632791368455344
@@ -447,29 +449,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.4614067, y: 0.40157008}
   m_EdgeRadius: 0
---- !u!114 &7349632791368455358
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7349632791368455350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3d858a2ce0387b488f306b5cae64719, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debugMode: 0
-  testCurrentBullets: 10
-  testReloadBullets: 100
-  testReloadText: {fileID: 0}
-  bulletsText: {fileID: 0}
-  testOwnedCoins: 1000
-  coinsText: {fileID: 0}
-  testParentObject: {fileID: 0}
-  testInitialPivot: {fileID: 0}
-  testNewHeartPositionOffset: 55
-  heartPrefab: {fileID: 2816007974591245144, guid: 75a388a3d1426ae46b394cbcb406d0ca, type: 3}
 --- !u!114 &7349632791368455357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -485,6 +464,7 @@ MonoBehaviour:
   health: 5
   enemyBullet: {fileID: 5824302977754596764, guid: 60823f7bbb5cbe0479971d878d9f27c4, type: 3}
   player: {fileID: 0}
+  hud: {fileID: 0}
   invulnerabilityTime: 2.5
   spriteBlinkingTimer: 0
   spriteBlinkingMiniDuration: 0.1
@@ -587,18 +567,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &776420428793440740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7349632791368455350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1788374c7e908c24dacd90b829e70e1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7349632791589380478
 GameObject:
   m_ObjectHideFlags: 0
