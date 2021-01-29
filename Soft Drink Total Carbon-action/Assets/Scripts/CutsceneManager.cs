@@ -20,6 +20,8 @@ public class CutsceneManager : MonoBehaviour
     private float timer1Remaining = 5.0f;
     public bool timer1IsRunning = true;
 
+    public string sceneToLoadAfter;
+
     void Start()
     {
         image1.canvasRenderer.SetAlpha(0.0f);
@@ -72,7 +74,7 @@ public class CutsceneManager : MonoBehaviour
 
             if (currentImage >= SpriteArray.Length)
             {
-                SceneManager.LoadScene("MechanicTestScene", LoadSceneMode.Single);
+                SceneManager.LoadScene(sceneToLoadAfter, LoadSceneMode.Single);
                 currentImage = 0;
             }
 
@@ -86,7 +88,7 @@ public class CutsceneManager : MonoBehaviour
 
             if (currentImage >= SpriteArray.Length)
             {
-                SceneManager.LoadScene("MechanicTestScene", LoadSceneMode.Single);
+                SceneManager.LoadScene(sceneToLoadAfter, LoadSceneMode.Single);
                 currentImage = 0;                
             }
 
@@ -99,7 +101,7 @@ public class CutsceneManager : MonoBehaviour
 
             if (currentImage >= SpriteArray.Length)
             {
-                SceneManager.LoadScene("MechanicTestScene", LoadSceneMode.Single);
+                SceneManager.LoadScene(sceneToLoadAfter, LoadSceneMode.Single);
                 currentImage = 0;
             }
 

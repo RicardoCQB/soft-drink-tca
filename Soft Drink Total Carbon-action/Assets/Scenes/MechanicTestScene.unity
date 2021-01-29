@@ -383,6 +383,33 @@ MonoBehaviour:
   speakerName: {fileID: 1209798844}
   dialogText: {fileID: 2135855035}
   canvas: {fileID: 609631487}
+  endDialogue:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1072024150}
+        m_TargetAssemblyTypeName: Shooting, Assembly-CSharp
+        m_MethodName: MakePlayerFree
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 100193575}
+        m_TargetAssemblyTypeName: DialogManager, Assembly-CSharp
+        m_MethodName: EndDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &100193576
 Transform:
   m_ObjectHideFlags: 0
@@ -74132,7 +74159,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7349632791368455346, guid: dfd08fe83ff1ecb4dba9a08f4ad43e2d, type: 3}
       propertyPath: openDialogBox.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7349632791368455346, guid: dfd08fe83ff1ecb4dba9a08f4ad43e2d, type: 3}
       propertyPath: openStore.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
@@ -74193,7 +74220,7 @@ PrefabInstance:
     - target: {fileID: 7349632791368455346, guid: dfd08fe83ff1ecb4dba9a08f4ad43e2d, type: 3}
       propertyPath: openDialogBox.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1686906365}
+      objectReference: {fileID: 1072024150}
     - target: {fileID: 7349632791368455346, guid: dfd08fe83ff1ecb4dba9a08f4ad43e2d, type: 3}
       propertyPath: openStore.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ChangeHeartParentObject
@@ -74236,7 +74263,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7349632791368455346, guid: dfd08fe83ff1ecb4dba9a08f4ad43e2d, type: 3}
       propertyPath: openDialogBox.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: TriggerDialog
+      value: MakePlayerBusy
       objectReference: {fileID: 0}
     - target: {fileID: 7349632791368455346, guid: dfd08fe83ff1ecb4dba9a08f4ad43e2d, type: 3}
       propertyPath: openStore.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
@@ -74256,7 +74283,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7349632791368455346, guid: dfd08fe83ff1ecb4dba9a08f4ad43e2d, type: 3}
       propertyPath: openDialogBox.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: DialogTrigger, Assembly-CSharp
+      value: Shooting, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7349632791368455346, guid: dfd08fe83ff1ecb4dba9a08f4ad43e2d, type: 3}
       propertyPath: openStore.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument

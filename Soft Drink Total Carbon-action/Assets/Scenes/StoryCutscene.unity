@@ -226,6 +226,7 @@ MonoBehaviour:
   fadefinished: 0
   timer1: 10
   timer1IsRunning: 1
+  sceneToLoadAfter: MechanicTestScene
 --- !u!114 &979709339
 MonoBehaviour:
   m_ObjectHideFlags: 0
