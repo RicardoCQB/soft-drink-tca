@@ -10,7 +10,7 @@ public class Shooting : MonoBehaviour
 
     public float bulletForce = 10f;
     public bool bulletsAvailable;
-    bool playerIsInShop;
+    bool playerIsBusy = false;
 
     private void Start()
     {
@@ -19,7 +19,7 @@ public class Shooting : MonoBehaviour
 
     void Update()
     {
-        if (bulletsAvailable == true && playerIsInShop == false)
+        if (bulletsAvailable == true && playerIsBusy == false)
         {
             if (Input.GetButtonDown("Fire1"))
             {
@@ -53,14 +53,14 @@ public class Shooting : MonoBehaviour
     {
         bulletsAvailable = true;
     }
-    public void EnterShop()
+    public void MakePlayerBusy()
     {
-        Time.timeScale = 0; // Doing this make sure that bullets stop moving and can't hit the player.
-        playerIsInShop = true;
+        // This stops the shooting from happening, if the player is in the shop or pause menu
+        playerIsBusy = true;
     }
-    public void LeaveShop()
+    public void MakePlayerFree()
     {
-        Time.timeScale = 1; // Putting this back to 1 restores bullet movement.
-        playerIsInShop = false;
+        // This allows the shooting again.
+        playerIsBusy = false;
     }
 }
