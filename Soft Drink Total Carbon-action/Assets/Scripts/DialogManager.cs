@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events; // Library added specifically for this script.
 using TMPro;
 public class DialogManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class DialogManager : MonoBehaviour
     public TextMeshProUGUI speakerName;
     public TextMeshProUGUI dialogText;
     public GameObject canvas;
+
+    public UnityEvent endDialogue;
 
     private void Start()
     {
@@ -35,7 +38,7 @@ public class DialogManager : MonoBehaviour
     {
         if(sentences.Count == 0)
         {
-            EndDialogue();
+            endDialogue.Invoke();
             return;
         }
 
