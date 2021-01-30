@@ -23,14 +23,13 @@ public class BossAI : MonoBehaviour
     public GameObject bubbleParticles;
     public GameObject particleRotator;
     public GameObject lastCola;
-    public GameObject lastCola2;
 
     public Transform firePoint;
     public Transform firePoint_L;
     public Transform firePoint_R;
     public Transform firePoint_D;
     public Transform firePoint_U;
-    //public Animator enemyAnimator;
+    public Animator enemyAnimator;
 
 
     bool playerAlive;
@@ -60,8 +59,8 @@ public class BossAI : MonoBehaviour
         timeBetweenShots = startTimeBetweenShots;
         timeBetweenBubbles = startTimeBetweenBubbles;
 
-        //enemyAnimator = GetComponent<Animator>();
-        //enemyAnimator.Play(FRONT_WALKING);
+        enemyAnimator = GetComponent<Animator>();
+        enemyAnimator.Play(FRONT_WALKING);
 
         playerAlive = true;
     }
@@ -72,8 +71,8 @@ public class BossAI : MonoBehaviour
         if (health <= 0)
         {
             FindObjectOfType<AudioManager>().Play("EnemyDeath");
+
             lastCola.SetActive(true);
-            lastCola2.SetActive(true);
             Destroy(gameObject);
         }
 
@@ -126,7 +125,7 @@ public class BossAI : MonoBehaviour
                     timeBetweenShots -= Time.deltaTime;
                 }
 
-                Vector2 lookDir = playerRB.position - gameObject.GetComponent<Rigidbody2D>().position;
+                Vector2 lookDir = player.position - transform.position;
 
                 float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
 
@@ -175,26 +174,26 @@ public class BossAI : MonoBehaviour
         }
 
 
-        //if (isWalking && playerAlive)
-        //{
-        //    Vector2 lookDir = player.position - transform.position;
-        //    //Debug.Log("\npos: " + lookDir);
-        //    float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-        //    //Debug.Log("\nAngle: " + angle);
+        if (isWalking && playerAlive)
+        {
+            Vector2 lookDir = player.position - transform.position;
+            //Debug.Log("\npos: " + lookDir);
+            float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+            //Debug.Log("\nAngle: " + angle);
 
-        //    if (angle > -65f && angle <= 0f)
-        //        ChangeAnimationState(RIGHT_FRONT_WALKING);
-        //    else if (angle > 0f && angle <= 65f)
-        //        ChangeAnimationState(RIGHT_BACK_WALKING);
-        //    else if (angle > 65f && angle <= 115f)
-        //        ChangeAnimationState(BACK_WALKING);
-        //    else if (angle > 115f && angle <= 180f)
-        //        ChangeAnimationState(LEFT_BACK_WALKING);
-        //    else if (angle > -180f && angle <= -115f)
-        //        ChangeAnimationState(LEFT_FRONT_WALKING);
-        //    else if (angle > -115f && angle <= -65f)
-        //        ChangeAnimationState(FRONT_WALKING);
-        //}
+            if (angle > -65f && angle <= 0f)
+                ChangeAnimationState(RIGHT_FRONT_WALKING);
+            else if (angle > 0f && angle <= 65f)
+                ChangeAnimationState(RIGHT_BACK_WALKING);
+            else if (angle > 65f && angle <= 115f)
+                ChangeAnimationState(BACK_WALKING);
+            else if (angle > 115f && angle <= 180f)
+                ChangeAnimationState(LEFT_BACK_WALKING);
+            else if (angle > -180f && angle <= -115f)
+                ChangeAnimationState(LEFT_FRONT_WALKING);
+            else if (angle > -115f && angle <= -65f)
+                ChangeAnimationState(FRONT_WALKING);
+        }
 
     }
 
@@ -209,15 +208,16 @@ public class BossAI : MonoBehaviour
         }
     }
 
-    //void ChangeAnimationState(string newState)
-    //{
-    //    // If the current state is already playing, the function does nothing.
-    //    if (currentState == newState) return;
 
-    //    // Plays the animation state passed as a parameter.
-    //    enemyAnimator.Play(newState);
+    void ChangeAnimationState(string newState)
+    {
+        // If the current state is already playing, the function does nothing.
+        if (currentState == newState) return;
 
-    //    // Updates the current state animation.
-    //    currentState = newState;
-    //}
+        // Plays the animation state passed as a parameter.
+        enemyAnimator.Play(newState);
+
+        // Updates the current state animation.
+        currentState = newState;
+    }
 }
