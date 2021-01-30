@@ -23,6 +23,7 @@ public class BossAI : MonoBehaviour
     public GameObject bubbleParticles;
     public GameObject particleRotator;
     public GameObject lastCola;
+    public GameObject lastCola2;
 
     public Transform firePoint;
     public Transform firePoint_L;
@@ -72,6 +73,7 @@ public class BossAI : MonoBehaviour
         {
             FindObjectOfType<AudioManager>().Play("EnemyDeath");
             lastCola.SetActive(true);
+            lastCola2.SetActive(true);
             Destroy(gameObject);
         }
 

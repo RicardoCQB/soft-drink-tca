@@ -167,7 +167,12 @@ public class HUD : MonoBehaviour
     {
         // Updates the display of the user's available bullets to shoot and the ones available to reload.
         // Trigering this function is probably a bit more efficient than running this code every frame.
+        
         bulletsText.text = $"{testCurrentBullets}/{testReloadBullets}";
+        if(testReloadBullets==0)
+        {
+            testReloadBullets = 100;
+        }
     }
     public void UpdateCoinDisplay(Text specificCoinText)
     {
