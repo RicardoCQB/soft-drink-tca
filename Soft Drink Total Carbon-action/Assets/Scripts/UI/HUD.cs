@@ -19,6 +19,8 @@ public class HUD : MonoBehaviour
     int weaponMagazineSize;
     bool isGunReloading = false;
 
+    const string infiniteString = "\x221E";
+
     [Header("Coins")]
     // Test variables:
     [SerializeField] int testOwnedCoins;
@@ -47,14 +49,14 @@ public class HUD : MonoBehaviour
     {
         ChangeHeartsToNewParent(testInitialPivot);
 
-        weaponMagazineSize = testCurrentBullets;
+        weaponMagazineSize = 10;
         testReloadText.text = "";
 
         // Shows the user's currently owned coins:
         coinsText.text = $"{testOwnedCoins}";
 
         // Shows the user's available bullets to shoot and the ones available to reload:
-        bulletsText.text = $"{testCurrentBullets}/{testReloadBullets}";
+        bulletsText.text = $"{testCurrentBullets}/{infiniteString}";
     }
 
 
@@ -168,11 +170,8 @@ public class HUD : MonoBehaviour
         // Updates the display of the user's available bullets to shoot and the ones available to reload.
         // Trigering this function is probably a bit more efficient than running this code every frame.
         
-        bulletsText.text = $"{testCurrentBullets}/{testReloadBullets}";
-        if(testReloadBullets==0)
-        {
-            testReloadBullets = 100;
-        }
+        bulletsText.text = $"{testCurrentBullets}/{infiniteString}";
+       
     }
     public void UpdateCoinDisplay(Text specificCoinText)
     {
