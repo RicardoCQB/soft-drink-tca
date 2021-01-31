@@ -1846,7 +1846,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87cccedc1a1295a4495037c4162b0d28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  texture: {fileID: 2800000, guid: bdc9067e4d193054685e4cc511101d0d, type: 3}
+  texture: {fileID: 2800000, guid: c8702cec9c656c84e9df2b515f2a6825, type: 3}
 --- !u!4 &1875814111
 Transform:
   m_ObjectHideFlags: 0
